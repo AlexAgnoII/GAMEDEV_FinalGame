@@ -24,9 +24,11 @@ Avoiding Responsibilities
 
 **Sound**
 - Makes sounds when hopping.
+- death sound
 
 ***OPTIONAL***
 - particle effects
+- player sound
 
 
 ## World
@@ -36,6 +38,10 @@ Avoiding Responsibilities
 - need the map to objectpool.
 - generate obstacles
 - generate moving obstacles
+
+**Sound**
+- background sound.
+- obstacle sounds (if applicable)
 
 ***OPTIONAL***
 - AI ?
