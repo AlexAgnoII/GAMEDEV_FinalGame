@@ -14,7 +14,8 @@ Avoiding Responsibilities
  
 
 ## Player
-**Basic**
+
+***IMPORTANT***
 - needs to have a tile based movement (up,down,left,right)
 
 **Animation**
@@ -30,7 +31,7 @@ Avoiding Responsibilities
 
 ## World
 
-**IMPORTANT**
+***IMPORTANT***
 - need to design how to world would look like
 - need the map to objectpool.
 - generate obstacles
