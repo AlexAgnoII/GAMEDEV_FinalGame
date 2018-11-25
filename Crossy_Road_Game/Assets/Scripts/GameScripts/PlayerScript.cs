@@ -53,8 +53,10 @@ public class PlayerScript : MonoBehaviour {
         
         playerAnimator.SetTrigger(HOP_KEY);
         isHopping = true;
-        //translate this to DOTween movement.
-        transform.position = transform.position + nextLocation;
+
+        //translate this to smooth movement.
+        //transform.position = transform.position + nextLocation;
+        transform.DOMove(transform.position + nextLocation, 0.2f).SetEase(Ease.Flash);
 
         //Translate this to broadcasting.
         tGenerator.SpawnTerrain(false, this.transform.position);
