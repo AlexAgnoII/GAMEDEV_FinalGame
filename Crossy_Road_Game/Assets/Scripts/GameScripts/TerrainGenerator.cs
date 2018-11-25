@@ -10,12 +10,8 @@ public class TerrainGenerator : MonoBehaviour {
     [SerializeField] private List<TerrainData> terrainData_List = new List<TerrainData>();
     [SerializeField] private Queue<GameObject> currentTerrainsQueue = new Queue<GameObject>();
 
-    private Vector3 currentPosition = new Vector3(0, 0, 0);
-    
+    private Vector3 currentPosition = new Vector3(1, 0, 0);
 
-
-
-    
     void Start () {
         //Create a starting initialization of a map (premade designed tiles)
         for(int i = 0; i < MAX_TERRAIN_COUNT; i++)
