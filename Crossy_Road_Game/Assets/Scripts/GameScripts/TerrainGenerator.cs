@@ -13,11 +13,18 @@ public class TerrainGenerator : MonoBehaviour {
     private Vector3 currentPosition = new Vector3(1, 0, 0);
 
     void Start () {
-        //Create a starting initialization of a map (premade designed tiles)
-        for(int i = 0; i < MAX_TERRAIN_COUNT; i++)
+        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD, this.SpawnTerrain);
+
+        //Create first set of terrains.
+        for (int i = 0; i < MAX_TERRAIN_COUNT; i++)
         {
-            SpawnTerrain(true, new Vector3(0, 0, 0));
+            SpawnTerrain(null);
         }
+    }
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD);
     }
 
     //Fixed starting terrain when the user just spawned.
@@ -26,11 +33,19 @@ public class TerrainGenerator : MonoBehaviour {
 
     }
 
-    public void SpawnTerrain(bool isStart, Vector3 playerPosition)
+    public void SpawnTerrain(Parameters param)
     {
+        float playerXPos = 0;
+        bool isStart = true;
 
+        if(param != null)
+        {
+            playerXPos = param.GetFloatExtra(EventNames.FinalGameEvents.PARAM_PLAYER_X_POSITION, 0);
+            isStart = false;
+        }
+        
         //When you're half a distance away from the spawning point, start creating and deleting terrains.
-        if (currentPosition.x - playerPosition.x < minDistanceFromPlayer) {
+        if (currentPosition.x - playerXPos < minDistanceFromPlayer) {
             GameObject terrain, terrainRemove;
             int terrainIndex = Random.Range(0, terrainData_List.Count);
             int terrainInSuccession = Random.Range(terrainData_List[terrainIndex].getMinInSuccession(), 

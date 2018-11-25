@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour {
 
-    [SerializeField] private Transform playerTransform;
+    [SerializeField] GameObject player;
     [SerializeField] private Vector3 offSet = new Vector3(-2.5f, 7f , -6f);
+    [SerializeField] private Vector3 offSet_nope = new Vector3(0f, 7f, -6f);
     [SerializeField] private float smoothness = 0.15f;
 
     private void Awake()
     {
-        this.transform.position = playerTransform.position + offSet;
+        this.transform.position = player.transform.position + offSet;
     }
 
     void FixedUpdate()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position,
-                                               playerTransform.position + offSet,
-                                               smoothness);
+
+         this.transform.position = Vector3.Lerp(this.transform.position,
+                                                player.transform.position + offSet,
+                                                smoothness);
+
+
+
+
     }
 
 }
