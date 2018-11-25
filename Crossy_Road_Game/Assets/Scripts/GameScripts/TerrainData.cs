@@ -7,6 +7,7 @@ public class TerrainData : ScriptableObject {
     [SerializeField] private GameObject terrain;
     [SerializeField] private int maxInSuccession;
     [SerializeField] private int minInSucession;
+    [SerializeField] private bool isLower;
 
 
 
@@ -24,6 +25,11 @@ public class TerrainData : ScriptableObject {
     public int getMinInSuccession()
     {
         return this.minInSucession;
+    }
+
+    public bool getIsLower()
+    {
+        return this.isLower;
     }
 
 

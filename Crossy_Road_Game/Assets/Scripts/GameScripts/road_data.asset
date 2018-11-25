@@ -9,7 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e59053963c59094a875e4ea673ecc0c, type: 3}
-  m_Name: road_data
+  m_Name: Road_data
   m_EditorClassIdentifier: 
   terrain: {fileID: 1180861151655482, guid: b278042fbb6b89149b50d8ef016f8df0, type: 2}
   maxInSuccession: 5
+  minInSucession: 2
