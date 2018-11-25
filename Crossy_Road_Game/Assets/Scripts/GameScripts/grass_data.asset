@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e59053963c59094a875e4ea673ecc0c, type: 3}
-  m_Name: Grass_data
+  m_Name: grass_data
   m_EditorClassIdentifier: 
   terrain: {fileID: 1478371186761648, guid: cc211a0e2c0d27240bd3488de24638a8, type: 2}
   maxInSuccession: 5
   minInSucession: 2
+  isLower: 0

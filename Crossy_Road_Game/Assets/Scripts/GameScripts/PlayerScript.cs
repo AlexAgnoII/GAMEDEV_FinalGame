@@ -55,8 +55,7 @@ public class PlayerScript : MonoBehaviour {
         isHopping = true;
 
         //translate this to smooth movement.
-        //transform.position = transform.position + nextLocation;
-        transform.DOMove(transform.position + nextLocation, 0.2f).SetEase(Ease.Flash);
+        transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash);
 
         //Translate this to broadcasting.
         tGenerator.SpawnTerrain(false, this.transform.position);
