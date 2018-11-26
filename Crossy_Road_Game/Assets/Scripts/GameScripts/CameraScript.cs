@@ -17,6 +17,7 @@ public class CameraScript : MonoBehaviour {
     void FixedUpdate()
     {
 
+        if(player.GetComponent<PlayerScript>().getIfAlive())
          this.transform.position = Vector3.Lerp(this.transform.position,
                                                 player.transform.position + offSet,
                                                 smoothness);

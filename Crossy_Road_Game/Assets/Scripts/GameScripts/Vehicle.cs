@@ -22,7 +22,6 @@ public class Vehicle : MonoBehaviour {
         }
 	}
 
-
     public void setDirection(Vector3 direction)
     {
         this.directionGo = direction;

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4713546663048606}
   m_Layer: 0
   m_Name: SpawnLocation_north
-  m_TagString: Untagged
+  m_TagString: LEFT_FORCE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

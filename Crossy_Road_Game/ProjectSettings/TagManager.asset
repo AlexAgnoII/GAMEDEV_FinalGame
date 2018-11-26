@@ -7,6 +7,9 @@ TagManager:
   - ROAD_DEFAULT
   - SOUTH_ROAD
   - NORTH_ROAD
+  - VEHICLE
+  - RIGHT_FORCE
+  - LEFT_FORCE
   layers:
   - Default
   - TransparentFX

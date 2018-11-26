@@ -8,13 +8,21 @@ public class PlayerScript : MonoBehaviour {
     [SerializeField] private AudioClip hopSound;
     private Animator playerAnimator;
     private AudioSource audioSource;
-    private Vector3 movement = new Vector3(0,0,0);
-    private bool isHopping = false;
+    private Vector3 movement;
+    private bool isHopping;
     private const string HOP_KEY = "Hop";
+    private bool isAlive;
+    private bool once;
+        
     
 
     private void Start()
     {
+        once = true;
+        isAlive = true;
+        movement = new Vector3(0, 0, 0);
+        isHopping = false;
+
         playerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -27,26 +35,46 @@ public class PlayerScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if(Input.GetKeyDown(KeyCode.W) && !isHopping)
+        if(isAlive)
         {
-            CharacterMove(new Vector3(1, 0, genWholeNumPosition(transform.position.z)));
-            CharacterRotate(0);
+            if(Input.GetKeyDown(KeyCode.W) && !isHopping)
+            {
+                CharacterMove(new Vector3(1, 0, genWholeNumPosition(transform.position.z)));
+                CharacterRotate(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
+            {
+                CharacterMove(new Vector3(-1, 0, genWholeNumPosition(transform.position.z)));
+                CharacterRotate(180);
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
+            {
+                CharacterMove(new Vector3(0, 0, 1));
+                CharacterRotate(-90);
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
+            {
+                CharacterMove(new Vector3(0, 0, -1));
+                CharacterRotate(90);
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
+    }
+
+    private void FixedUpdate()
+    {
+        
+        if(!isAlive && once)
         {
-            CharacterMove(new Vector3(-1, 0, genWholeNumPosition(transform.position.z)));
-            CharacterRotate(180);
+            this.transform.DOScale(new Vector3(0, 0, 0), 0.2f).OnComplete(explodePlayer);
+
+
+            once = false;
         }
-        else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
-        {
-            CharacterMove(new Vector3(0, 0, 1));
-            CharacterRotate(-90);
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
-        {
-            CharacterMove(new Vector3(0, 0, -1));
-            CharacterRotate(90);
-        }
+    }
+
+    private void explodePlayer()
+    {
+        Debug.Log("BOOM");
     }
 
     private float genWholeNumPosition(float notWholeZ)
@@ -90,4 +118,19 @@ public class PlayerScript : MonoBehaviour {
         audioSource.clip = hopSound;
         audioSource.Play();
     }
+
+    //for some reason OnCollision enter rarely works, so this will do.
+    private void OnTriggerEnter(Collider other)
+    {
+        //disable camera movement + player movement.
+        this.isAlive = false;
+        
+    }
+
+    public bool getIfAlive()
+    {
+        return isAlive;
+    }
+
+
 }

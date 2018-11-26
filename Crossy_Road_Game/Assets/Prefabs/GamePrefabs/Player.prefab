@@ -22325,7 +22325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1deb2c6ae4b7a04cad541ddcd55459c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  croakSound: {fileID: 8300000, guid: d011052941014fb409c23c1f41890c2a, type: 3}
+  hopSound: {fileID: 0}
 --- !u!114 &114453903224104526
 MonoBehaviour:
   m_ObjectHideFlags: 1
