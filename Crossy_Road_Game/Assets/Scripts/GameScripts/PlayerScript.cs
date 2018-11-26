@@ -5,16 +5,19 @@ using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour {
 
+    [SerializeField] private AudioClip croakSound;
+
     private Animator playerAnimator;
+    private AudioSource audioSource;
     private Vector3 movement = new Vector3(0,0,0);
     private bool isHopping = false;
     private const string HOP_KEY = "Hop";
-
+    
 
     private void Start()
     {
         playerAnimator = GetComponent<Animator>();
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnDestroy()
@@ -29,21 +32,25 @@ public class PlayerScript : MonoBehaviour {
         {
             CharacterMove(new Vector3(1, 0, genWholeNumPosition(transform.position.z)));
             CharacterRotate(0);
+            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
         {
             CharacterMove(new Vector3(-1, 0, genWholeNumPosition(transform.position.z)));
             CharacterRotate(180);
+            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
         {
             CharacterMove(new Vector3(0, 0, 1));
             CharacterRotate(-90);
+            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
         {
             CharacterMove(new Vector3(0, 0, -1));
             CharacterRotate(90);
+            playCroakSound();
         }
     }
 
@@ -82,4 +89,9 @@ public class PlayerScript : MonoBehaviour {
         isHopping = false;
     }
 
+    private void playCroakSound()
+    {
+        audioSource.clip = croakSound;
+        audioSource.Play();
+    }
 }
