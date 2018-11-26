@@ -27,12 +27,6 @@ public class TerrainGenerator : MonoBehaviour {
         EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD);
     }
 
-    //Fixed starting terrain when the user just spawned.
-    private void spawnStartingTerrain()
-    {
-
-    }
-
     public void SpawnTerrain(Parameters param)
     {
         float playerXPos = 0;
@@ -51,13 +45,15 @@ public class TerrainGenerator : MonoBehaviour {
             int terrainInSuccession = Random.Range(terrainData_List[terrainIndex].getMinInSuccession(), 
                                                    terrainData_List[terrainIndex].getMaxInSuccession());
 
-        
-            for(int i = 0; i < terrainInSuccession; i++)
+            List<GameObject> terrainKinds = terrainData_List[terrainIndex].getTerrainKinds();
+            for (int i = 0; i < terrainInSuccession; i++)
             {
-                terrain = Instantiate(terrainData_List[terrainIndex].getTerrain(), 
+
+                terrain = Instantiate(terrainKinds[Random.Range(0, terrainKinds.Count)], 
                                           currentPosition, 
                                           Quaternion.identity, 
                                           parentLocation.transform);
+
                 currentTerrainsQueue.Enqueue(terrain);
 
                 //If the current terrain spawned exceeds the max terrain count, remove the oldest.
@@ -70,6 +66,5 @@ public class TerrainGenerator : MonoBehaviour {
                 currentPosition.x++;
             }
         }
-
     }
 }

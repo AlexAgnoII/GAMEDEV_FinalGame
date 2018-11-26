@@ -4,17 +4,14 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Terrain Data", menuName = "Terrain Data")]
 public class TerrainData : ScriptableObject {
-    [SerializeField] private GameObject terrain;
+    [SerializeField] private List<GameObject> terrainKinds;
     [SerializeField] private int maxInSuccession;
     [SerializeField] private int minInSucession;
-    [SerializeField] private bool isLower;
-
-
 
     
-    public GameObject getTerrain()
+    public List<GameObject> getTerrainKinds()
     {
-        return this.terrain;
+        return this.terrainKinds;
     }
 
     public int getMaxInSuccession()
@@ -25,11 +22,6 @@ public class TerrainData : ScriptableObject {
     public int getMinInSuccession()
     {
         return this.minInSucession;
-    }
-
-    public bool getIsLower()
-    {
-        return this.isLower;
     }
 
 

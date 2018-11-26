@@ -5,8 +5,7 @@ using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour {
 
-    [SerializeField] private AudioClip croakSound;
-
+    [SerializeField] private AudioClip hopSound;
     private Animator playerAnimator;
     private AudioSource audioSource;
     private Vector3 movement = new Vector3(0,0,0);
@@ -32,25 +31,21 @@ public class PlayerScript : MonoBehaviour {
         {
             CharacterMove(new Vector3(1, 0, genWholeNumPosition(transform.position.z)));
             CharacterRotate(0);
-            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
         {
             CharacterMove(new Vector3(-1, 0, genWholeNumPosition(transform.position.z)));
             CharacterRotate(180);
-            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
         {
             CharacterMove(new Vector3(0, 0, 1));
             CharacterRotate(-90);
-            playCroakSound();
         }
         else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
         {
             CharacterMove(new Vector3(0, 0, -1));
             CharacterRotate(90);
-            playCroakSound();
         }
     }
 
@@ -70,6 +65,7 @@ public class PlayerScript : MonoBehaviour {
         playerAnimator.SetTrigger(HOP_KEY);
         isHopping = true;
         transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash);
+        playHopSound();
         
 
         //Broadcast to terrain generator.
@@ -79,7 +75,7 @@ public class PlayerScript : MonoBehaviour {
         EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD, parameters);
     }
 
-    private void CharacterRotate(float angle)
+    private void CharacterRotate(int angle)
     {
         transform.DORotate(new Vector3(0, angle, 0), 0.1f);
     }
@@ -89,9 +85,9 @@ public class PlayerScript : MonoBehaviour {
         isHopping = false;
     }
 
-    private void playCroakSound()
+    private void playHopSound()
     {
-        audioSource.clip = croakSound;
+        audioSource.clip = hopSound;
         audioSource.Play();
     }
 }
