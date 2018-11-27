@@ -14,11 +14,13 @@ public class PlayerScript : MonoBehaviour {
     private const string HOP_KEY = "Hop";
     private bool isAlive;
     private bool once;
+    private bool onceTrigger;
     private float maxX;
 
     private void Start()
     {
         once = true;
+        onceTrigger = true;
         isAlive = true;
         movement = new Vector3(0, 0, 0);
         isHopping = false;
@@ -138,15 +140,20 @@ public class PlayerScript : MonoBehaviour {
     //for some reason OnCollision enter rarely works, so this will do.
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Killed by: " + other.tag);
-        //disable camera movement + player movement.
-        this.isAlive = false;
-        
+        if(onceTrigger)
+        {
+            onceTrigger = !onceTrigger;
+
+
+            Debug.Log("Killed by: " + other.tag);
+            //disable camera movement + player movement.
+            this.isAlive = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.tag);
+        //On log.
         if(string.Equals(collision.collider.tag, PrefabTags.MovingObstacles.LOG))
         {
             this.transform.parent = collision.collider.transform;
@@ -154,6 +161,19 @@ public class PlayerScript : MonoBehaviour {
         else
         {
             this.transform.parent = null;
+
+            //on grass
+            if (string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.GRASS))
+            {
+                //grass texture sound.
+            }
+
+            //on any road.
+            else if (string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.NORTH_BOUND_ROAD) ||
+                    string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.SOUTH_BOUND_ROAD))
+            {
+                //road texture sound
+            }
         }
     }
 

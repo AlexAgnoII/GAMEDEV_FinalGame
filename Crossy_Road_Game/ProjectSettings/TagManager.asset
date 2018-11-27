@@ -6,15 +6,14 @@ TagManager:
   tags:
   - ROAD_DEFAULT
   - VEHICLE
-  - NORTH_BOUND
-  - SOUTH_BOUND
-  - NORTH_SPAWN
   - SOUTH_SPAWN
   - LOG
-  - NORTH_BOUND_ROUD
   - SOUTH_BOUND_ROAD
   - NORTH_BOUND_WATER
   - SOUTH_BOUND_WATER
+  - GRASS
+  - NORTH_SPAWN
+  - NORTH_BOUND_ROAD
   layers:
   - Default
   - TransparentFX

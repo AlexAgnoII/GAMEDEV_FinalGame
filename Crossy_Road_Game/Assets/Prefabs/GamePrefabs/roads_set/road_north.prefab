@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114087133608013780}
   m_Layer: 0
   m_Name: road_north
-  m_TagString: NORTH_BOUND_ROUD
+  m_TagString: NORTH_BOUND_ROAD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127

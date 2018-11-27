@@ -9,8 +9,10 @@ public class PrefabTags : MonoBehaviour {
 
 	public class TerrainGroup
     {
+        public const string GRASS = "GRASS";
+
         public const string DEFAULT_ROAD = "ROAD_DEFAULT";
-        public const string NORTH_BOUND_ROUD = "NORTH_BOUND_ROUD";
+        public const string NORTH_BOUND_ROAD = "NORTH_BOUND_ROAD";
         public const string SOUTH_BOUND_ROAD = "SOUTH_BOUND_ROAD";
 
         public const string NORTH_BOUND_WATER = "NORTH_BOUND_WATER";
