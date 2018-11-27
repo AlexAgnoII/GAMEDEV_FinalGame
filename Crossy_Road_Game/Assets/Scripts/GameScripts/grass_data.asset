@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Name: grass_data
   m_EditorClassIdentifier: 
   terrainKinds:
-  - {fileID: 1478371186761648, guid: cc211a0e2c0d27240bd3488de24638a8, type: 2}
+  - {fileID: 1890590360932678, guid: 2cdd639573daeef4da58d0d68a80a75d, type: 2}
+  - {fileID: 1074682172330648, guid: bc9442e4a647a7349baac18db9c6f22f, type: 2}
+  - {fileID: 1003342546081418, guid: 22eb5c7712522d5429c9351555a07466, type: 2}
+  - {fileID: 1124417874297038, guid: 0222613409a4c6b49995dac7d4419a41, type: 2}
+  - {fileID: 1476220250538702, guid: b9e2d099136425842a7d227a2709e448, type: 2}
+  - {fileID: 1711551655799892, guid: 0ddba055cd274d14ebdf146e078e043e, type: 2}
   maxInSuccession: 5
   minInSucession: 2
