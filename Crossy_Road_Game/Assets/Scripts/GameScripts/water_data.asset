@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: water_data
   m_EditorClassIdentifier: 
   terrainKinds:
-  - {fileID: 1503028513535188, guid: 1c84ad394a670d840bfa121061cf4fe4, type: 2}
+  - {fileID: 1435712539566752, guid: 78f529f48bc900b44b95c30f9c7d6d3f, type: 2}
+  - {fileID: 1291504920695252, guid: 6cb363dd8a5fb2d4390ef0c1b3b14ce9, type: 2}
   maxInSuccession: 3
   minInSucession: 2

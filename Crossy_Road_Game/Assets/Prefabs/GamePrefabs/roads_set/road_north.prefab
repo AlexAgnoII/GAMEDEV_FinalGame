@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114087133608013780}
   m_Layer: 0
   m_Name: road_north
-  m_TagString: NORTH_ROAD
+  m_TagString: NORTH_BOUND_ROUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4713546663048606}
   m_Layer: 0
   m_Name: SpawnLocation_north
-  m_TagString: LEFT_FORCE
+  m_TagString: NORTH_SPAWN
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,15 +141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed6456a92e45c543bc85309f35edadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicles:
+  movingObstacleList:
   - {fileID: 1717538419887418, guid: 9febb0a932256584eb1d1b489f672f1f, type: 2}
   - {fileID: 1268852650152276, guid: 4cf6b12bcdfb2264280d2ddd3438ee45, type: 2}
   - {fileID: 1102848051365884, guid: a4478c9ec94dd434a8ca253652be0e3a, type: 2}
   spawnLocation: {fileID: 4713546663048606}
   minSpawnTime: 1
   maxSpawnTime: 4
-  minVehicleSpeed: 2
-  maxVehicleSpeed: 8
+  minObstacleSpeed: 2
+  maxObstacleSpeed: 8
 --- !u!114 &114664882300456022
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33653113600197474}
   - component: {fileID: 23323643590778556}
   - component: {fileID: 65376959525207020}
-  - component: {fileID: 114411057616240698}
+  - component: {fileID: 114926337438220512}
   m_Layer: 0
   m_Name: car_hb_short
   m_TagString: VEHICLE
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114411057616240698
+--- !u!114 &114926337438220512
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,5 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b84c47cb3916241be168f86f317c49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   distanceOfDeath: 20

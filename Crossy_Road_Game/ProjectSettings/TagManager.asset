@@ -5,11 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - ROAD_DEFAULT
-  - SOUTH_ROAD
-  - NORTH_ROAD
   - VEHICLE
-  - RIGHT_FORCE
-  - LEFT_FORCE
+  - NORTH_BOUND
+  - SOUTH_BOUND
+  - NORTH_SPAWN
+  - SOUTH_SPAWN
+  - LOG
+  - NORTH_BOUND_ROUD
+  - SOUTH_BOUND_ROAD
+  - NORTH_BOUND_WATER
+  - SOUTH_BOUND_WATER
   layers:
   - Default
   - TransparentFX

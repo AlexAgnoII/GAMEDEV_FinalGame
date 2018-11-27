@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class PlayerScript : MonoBehaviour {
 
@@ -13,8 +14,7 @@ public class PlayerScript : MonoBehaviour {
     private const string HOP_KEY = "Hop";
     private bool isAlive;
     private bool once;
-        
-    
+    private float maxX;
 
     private void Start()
     {
@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour {
         isAlive = true;
         movement = new Vector3(0, 0, 0);
         isHopping = false;
+        maxX = 0.0f;
 
         playerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -60,8 +61,23 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+
+    //sends a signal to whomever will receive it to update score.
+    private void onMoveTweenFinish()
+    {
+        //get score and pass to UI via broadcast.
+        if(maxX < Math.Floor(this.transform.position.x) && maxX >= 0)
+        {
+            maxX = (float) Math.Floor(this.transform.position.x);
+            Debug.Log("Score: " + maxX);
+        }
+
+        //play sound of hop.
+    }
+
     private void FixedUpdate()
     {
+
         
         if(!isAlive && once)
         {
@@ -92,7 +108,7 @@ public class PlayerScript : MonoBehaviour {
     {
         playerAnimator.SetTrigger(HOP_KEY);
         isHopping = true;
-        transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash);
+        transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
         playHopSound();
         
 
@@ -122,9 +138,23 @@ public class PlayerScript : MonoBehaviour {
     //for some reason OnCollision enter rarely works, so this will do.
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Killed by: " + other.tag);
         //disable camera movement + player movement.
         this.isAlive = false;
         
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.tag);
+        if(string.Equals(collision.collider.tag, PrefabTags.MovingObstacles.LOG))
+        {
+            this.transform.parent = collision.collider.transform;
+        }
+        else
+        {
+            this.transform.parent = null;
+        }
     }
 
     public bool getIfAlive()
