@@ -1,15 +1,30 @@
 fileFormatVersion: 2
-guid: e7bf919b9c62f4e7e8bc0519212f6954
+guid: d599a9220a4044beda522dbc5cc6ee10
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: chairs
-    2100002: table
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: e482af4e7122d17e4ddb8c9d38875753bafd8e1a
+    100000: Cylinder001
+    100002: Object001
+    100004: //RootNode
+    100006: Sphere001
+    400000: Cylinder001
+    400002: Object001
+    400004: //RootNode
+    400006: Sphere001
+    2100000: 02_-_Default
+    2100002: 01_-_Default
+    2100004: 03_-_Default
+    2100006: Material__40
+    2100008: 07_-_Default
+    2300000: Cylinder001
+    2300002: Object001
+    2300004: Sphere001
+    3300000: Cylinder001
+    3300002: Object001
+    3300004: Sphere001
+    4300000: Sphere001
+    4300002: Cylinder001
+    4300004: Object001
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
