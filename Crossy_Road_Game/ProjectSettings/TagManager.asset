@@ -14,6 +14,7 @@ TagManager:
   - GRASS
   - NORTH_SPAWN
   - NORTH_BOUND_ROAD
+  - FIXED_OBSTACLES
   layers:
   - Default
   - TransparentFX

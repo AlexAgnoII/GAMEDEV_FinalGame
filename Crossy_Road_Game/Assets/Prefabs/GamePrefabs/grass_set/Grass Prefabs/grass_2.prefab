@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 114032141878161428}
   - component: {fileID: 64416643869572024}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: hb_1
+  m_TagString: FIXED_OBSTACLES
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -137,8 +137,8 @@ GameObject:
   - component: {fileID: 114413198535665292}
   - component: {fileID: 64721343672890480}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: hb_2
+  m_TagString: FIXED_OBSTACLES
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -195,8 +195,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1074682172330648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.380516, y: -3.0517502, z: 4.0649548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4829489077618206}

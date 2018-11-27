@@ -25,7 +25,7 @@ public class PrefabTags : MonoBehaviour {
 
     public class FixedObstacles
     {
-
+        public const string FIXED_OBSTACLES = "FIXED_OBSTACLES";
     }
 
     public class MovingObstacles

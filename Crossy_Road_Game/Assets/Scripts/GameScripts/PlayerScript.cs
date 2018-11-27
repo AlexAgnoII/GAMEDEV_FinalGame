@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        
         if(isAlive)
         {
             if(Input.GetKeyDown(KeyCode.W) && !isHopping)
@@ -110,7 +110,11 @@ public class PlayerScript : MonoBehaviour {
     {
         playerAnimator.SetTrigger(HOP_KEY);
         isHopping = true;
-        transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
+
+        //check if there is collision from a fixed obstacle infront of user.
+        if(!hasObstacleInFront(nextLocation))
+            transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
+        
         playHopSound();
         
 
@@ -119,6 +123,21 @@ public class PlayerScript : MonoBehaviour {
         parameters.PutExtra(EventNames.FinalGameEvents.PARAM_PLAYER_X_POSITION, this.transform.position.x);
 
         EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD, parameters);
+    }
+
+    private bool hasObstacleInFront(Vector3 nextLocation)
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(this.transform.position, 
+                           nextLocation, out hit, 
+                           1.0f)) 
+        {
+
+            if(string.Equals(hit.collider.tag, PrefabTags.FixedObstacles.FIXED_OBSTACLES))
+                return true;
+        }
+
+        return false;
     }
 
     private void CharacterRotate(int angle)
