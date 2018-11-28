@@ -24,8 +24,13 @@ public class EventNames {
     public class FinalGameAudioEvents
     {
         public const string ON_GRASS_SOUND = "ON_GRASS_SOUND";
+        public const string ON_HOPPING_SOUND = "ON_HOPPING_SOUND";
         public const string ON_ROAD_SOUND = "ON_ROAD_SOUND";
         public const string ON_LOG_SOUND = "ON_LOG_SOUND";
+        public const string ON_DEATH_SOUND = "ON_DEATH_SOUND";
+        public const string ON_DAY_PHASE = "ON_DAY_PHASE";
+        public const string ON_SPLASH_SOUND = "ON_SPLASH_SOUND";
+        public const string ON_CRASH_SOUND = "ON_CRASH_SOUND";
     }
 
 

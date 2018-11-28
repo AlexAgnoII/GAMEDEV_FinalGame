@@ -86,6 +86,7 @@ public class PlayerScript : MonoBehaviour {
         }
 
         //play sound of hop.
+        EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND);
     }
 
     private void FixedUpdate()
@@ -94,6 +95,7 @@ public class PlayerScript : MonoBehaviour {
         
         if(!isAlive && once)
         {
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND);
             this.transform.DOScale(new Vector3(0, 0, 0), 0.2f).OnComplete(explodePlayer);
 
 
@@ -126,7 +128,7 @@ public class PlayerScript : MonoBehaviour {
         if(!hasObstacleInFront(nextLocation))
             transform.DOMove(transform.position + nextLocation, tweenSpeed).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
         
-        playHopSound();
+        
         
 
         //Broadcast to terrain generator.
@@ -183,6 +185,14 @@ public class PlayerScript : MonoBehaviour {
 
 
             Debug.Log("Killed by: " + other.tag);
+            switch (other.tag)
+            {
+                case "VEHICLE": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_CRASH_SOUND);
+                    break;
+                case "NORTH_BOUND_WATER":
+                case "SOUTH_BOUND_WATER": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
+                    break;
+            }
             //disable camera movement + player movement.
             this.isAlive = false;
         }
