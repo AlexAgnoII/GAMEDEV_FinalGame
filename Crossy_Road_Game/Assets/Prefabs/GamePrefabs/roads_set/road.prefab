@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4001776257593526
 Transform:
   m_ObjectHideFlags: 1
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180861151655482}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.910517, y: -0.053500414, z: -3.9350452}
+  m_LocalPosition: {x: 0.58948326, y: -0.053500414, z: -3.9350452}
   m_LocalScale: {x: 1, y: 0.79999995, z: 1}
   m_Children:
   - {fileID: 4311876740917440}
@@ -89,7 +89,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: e1d4830ec6d4744778fb8d1e5c663186, type: 2}
+  - {fileID: 2100000, guid: 0891c49c8ac66b146ac9a4201db54048, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -439,9 +439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed6456a92e45c543bc85309f35edadd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingObstacleList: []
+  vehicles:
+  - {fileID: 1717538419887418, guid: 9febb0a932256584eb1d1b489f672f1f, type: 2}
   spawnLocation: {fileID: 4311876740917440}
   minSpawnTime: 1
   maxSpawnTime: 4
-  minObstacleSpeed: 2
-  maxObstacleSpeed: 8
+  minVehicleSpeed: 2
+  maxVehicleSpeed: 8
