@@ -187,10 +187,13 @@ public class PlayerScript : MonoBehaviour {
             Debug.Log("Killed by: " + other.tag);
             switch (other.tag)
             {
+                
                 case "VEHICLE": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_CRASH_SOUND);
+                    Debug.Log("at switch case");
                     break;
                 case "NORTH_BOUND_WATER":
                 case "SOUTH_BOUND_WATER": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
+                    Debug.Log("at switch case");
                     break;
             }
             //disable camera movement + player movement.
@@ -204,8 +207,8 @@ public class PlayerScript : MonoBehaviour {
         //On log.
         if(string.Equals(collision.collider.tag, PrefabTags.MovingObstacles.LOG))
         {
-            this.transform.parent = collision.collider.transform;
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_LOG_SOUND);
+            this.transform.parent = collision.collider.transform;
         }
         else
         {

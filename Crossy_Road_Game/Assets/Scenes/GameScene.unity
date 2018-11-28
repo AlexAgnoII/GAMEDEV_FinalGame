@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grassSound: {fileID: 8300000, guid: 1ffaee386a832c74482f7e795ae376b7, type: 3}
   roadSound: {fileID: 0}
-  logSound: {fileID: 0}
+  logSound: {fileID: 8300000, guid: 2f0131d4ea79fb141b63743ff426d1fa, type: 3}
   deathSound: {fileID: 8300000, guid: 0bf997fde971bf4448cfac7ad33c5a2d, type: 3}
   hopSound: {fileID: 8300000, guid: c0bc9ae61b499654e81d99a33fa9d676, type: 3}
   splashSound: {fileID: 8300000, guid: b430581885b65b84b98d93e2a6077751, type: 3}
@@ -55762,7 +55762,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 055cbd83cd95d434c91f072d3a502f3f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

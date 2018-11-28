@@ -34,6 +34,7 @@ public class SoundEffectsScript : MonoBehaviour {
 
         hoppingAudioSource = GetComponent<AudioSource>();
         effectsAudioSource = gameObject.AddComponent<AudioSource>();
+        effectsAudioSource.volume = 1;
         nightSoundSource = AddAudio(nightSound, true);
         morningSoundSource = AddAudio(morningSound, true);
         

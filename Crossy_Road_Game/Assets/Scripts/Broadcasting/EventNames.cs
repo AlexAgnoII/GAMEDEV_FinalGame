@@ -33,7 +33,6 @@ public class EventNames {
         public const string ON_CRASH_SOUND = "ON_CRASH_SOUND";
     }
 
-
 	public class ARBluetoothEvents {
 		public const string ON_START_BLUETOOTH_DEMO = "ON_START_BLUETOOTH_DEMO";
 		public const string ON_RECEIVED_MESSAGE = "ON_RECEIVED_MESSAGE";
