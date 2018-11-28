@@ -7,8 +7,10 @@ using System;
 public class PlayerScript : MonoBehaviour {
 
     [SerializeField] private AudioClip hopSound;
+    [SerializeField] private float tweenSpeed;
     private Animator playerAnimator;
     private AudioSource audioSource;
+    private SphereCollider myCollider;
     private Vector3 movement;
     private bool isHopping;
     private const string HOP_KEY = "Hop";
@@ -17,8 +19,10 @@ public class PlayerScript : MonoBehaviour {
     private bool onceTrigger;
     private float maxX;
 
+
     private void Start()
     {
+        
         once = true;
         onceTrigger = true;
         isAlive = true;
@@ -28,6 +32,8 @@ public class PlayerScript : MonoBehaviour {
 
         playerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        myCollider = GetComponent<SphereCollider>();
+
     }
 
     private void OnDestroy()
@@ -37,7 +43,6 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        
         if(isAlive)
         {
             if(Input.GetKeyDown(KeyCode.W) && !isHopping)
@@ -79,7 +84,7 @@ public class PlayerScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
+        
         
         if(!isAlive && once)
         {
@@ -113,7 +118,7 @@ public class PlayerScript : MonoBehaviour {
 
         //check if there is collision from a fixed obstacle infront of user.
         if(!hasObstacleInFront(nextLocation))
-            transform.DOMove(transform.position + nextLocation, 0.1f).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
+            transform.DOMove(transform.position + nextLocation, tweenSpeed).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
         
         playHopSound();
         
@@ -142,12 +147,19 @@ public class PlayerScript : MonoBehaviour {
 
     private void CharacterRotate(int angle)
     {
-        transform.DORotate(new Vector3(0, angle, 0), 0.1f);
+        transform.DORotate(new Vector3(0, angle, 0), tweenSpeed);
     }
 
+    //for animation event.
     public void FinishedHop()
     {
-        isHopping = false;
+        this.myCollider.center = new Vector3(0, -0.02f, 0);
+    }
+
+    //for animation event.
+    public void JumpPeak()
+    {
+        this.myCollider.center = new Vector3(0, 1.0f, 0);
     }
 
     private void playHopSound()
@@ -172,10 +184,14 @@ public class PlayerScript : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         //On log.
         if(string.Equals(collision.collider.tag, PrefabTags.MovingObstacles.LOG))
         {
             this.transform.parent = collision.collider.transform;
+
+
+            Debug.Log("Log sound?");
         }
         else
         {
@@ -185,6 +201,7 @@ public class PlayerScript : MonoBehaviour {
             if (string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.GRASS))
             {
                 //grass texture sound.
+                Debug.Log("grass sound?");
             }
 
             //on any road.
@@ -192,9 +209,16 @@ public class PlayerScript : MonoBehaviour {
                     string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.SOUTH_BOUND_ROAD))
             {
                 //road texture sound
+                Debug.Log("road sound?");
             }
         }
+
+        //only allow hopping IF user lands. NOT when animation is finished.
+        isHopping = false;
     }
+
+
+
 
     public bool getIfAlive()
     {
