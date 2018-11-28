@@ -77,6 +77,12 @@ public class PlayerScript : MonoBehaviour {
         {
             maxX = (float) Math.Floor(this.transform.position.x);
             Debug.Log("Score: " + maxX);
+
+            Parameters param = new Parameters();
+            param.PutExtra(EventNames.FinalGameEvents.PLAYER_SCORE, maxX);
+
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_UPDATE_SCORE, param);
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_CHANGE_DIRECTIONAL_LIGHT);
         }
 
         //play sound of hop.
@@ -189,9 +195,7 @@ public class PlayerScript : MonoBehaviour {
         if(string.Equals(collision.collider.tag, PrefabTags.MovingObstacles.LOG))
         {
             this.transform.parent = collision.collider.transform;
-
-
-            Debug.Log("Log sound?");
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_LOG_SOUND);
         }
         else
         {
@@ -201,7 +205,7 @@ public class PlayerScript : MonoBehaviour {
             if (string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.GRASS))
             {
                 //grass texture sound.
-                Debug.Log("grass sound?");
+                EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_GRASS_SOUND);
             }
 
             //on any road.
@@ -209,7 +213,7 @@ public class PlayerScript : MonoBehaviour {
                     string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.SOUTH_BOUND_ROAD))
             {
                 //road texture sound
-                Debug.Log("road sound?");
+                EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_ROAD_SOUND);
             }
         }
 
