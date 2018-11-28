@@ -15,17 +15,9 @@ public class EventNames {
     public class FinalGameEvents
     {
         public const string ON_PLAYER_MOVE_FORWARD = "ON_PLAYER_MOVE_FORWARD";
-        public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
-        public const string ON_CHANGE_DIRECTIONAL_LIGHT = "ON_CHANGE_DIRECTIONAL_LIGHT";
-        public const string ON_UPDATE_SCORE = "ON_UPDATE_SCORE";
-        public const string PLAYER_SCORE = "PLAYER_SCORE";
-    }
 
-    public class FinalGameAudioEvents
-    {
-        public const string ON_GRASS_SOUND = "ON_GRASS_SOUND";
-        public const string ON_ROAD_SOUND = "ON_ROAD_SOUND";
-        public const string ON_LOG_SOUND = "ON_LOG_SOUND";
+
+        public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
     }
 
 
