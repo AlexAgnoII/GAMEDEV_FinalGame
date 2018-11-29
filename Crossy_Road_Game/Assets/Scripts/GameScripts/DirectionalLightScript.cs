@@ -14,22 +14,28 @@ public class DirectionalLightScript : MonoBehaviour {
     void Start () {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_CHANGE_DIRECTIONAL_LIGHT, this.RotateDirectionalLight);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_CHANGE_DIRECTIONAL_LIGHT);
+    }
+
+    //** Functionalities dissabled until initial game is done **//
 
     public void RotateDirectionalLight()
     {
+        /*
         Debug.Log("Rotating Directional Light");
         transform.Rotate(new Vector3(DIRECTIONAL_LIGHT_ROTATION, 0, 0));
         directionalLightRotation = transform.rotation.eulerAngles.x;
         checkDayPhase();
+        */
     }
 
     public void checkDayPhase()
     {
+        
+        /*
         Debug.Log("Checking Day Phase");
         if (directionalLightRotation > 180)
         {
@@ -56,5 +62,6 @@ public class DirectionalLightScript : MonoBehaviour {
                 //play morning sound
             }
         }
+        */
     }
 }

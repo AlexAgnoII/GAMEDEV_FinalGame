@@ -17,8 +17,13 @@ public class BackgroundMusicScript : MonoBehaviour {
         morningSoundSource = AddAudio(morningSound, true);
     }
 
-	// Update is called once per frame
-	void Update () {
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_DAY_PHASE);
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 	}
 

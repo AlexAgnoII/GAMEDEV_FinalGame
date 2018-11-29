@@ -39,7 +39,19 @@ public class SoundEffectsScript : MonoBehaviour {
         morningSoundSource = AddAudio(morningSound, true);
         
     }
-	
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_GRASS_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_LOG_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_ROAD_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_CRASH_SOUND);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_DAY_PHASE);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND);
+    }
+
     void playSplashSound()
     {
         effectsAudioSource.clip = splashSound;
