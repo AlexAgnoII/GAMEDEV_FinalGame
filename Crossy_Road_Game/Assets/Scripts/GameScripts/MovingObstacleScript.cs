@@ -8,10 +8,6 @@ public class MovingObstacleScript : MonoBehaviour {
     private float speed;
     private Vector3 directionGo = Vector3.forward;
 
-    private void Start(){
-
-    }
-
     // Update is called once per frame
     void FixedUpdate () {
         this.transform.Translate(speed * Time.deltaTime * directionGo);

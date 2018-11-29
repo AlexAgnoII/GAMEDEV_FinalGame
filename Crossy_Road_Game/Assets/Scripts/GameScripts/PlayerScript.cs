@@ -91,8 +91,6 @@ public class PlayerScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        
-        
         if(!isAlive && once)
         {
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND);
@@ -128,9 +126,6 @@ public class PlayerScript : MonoBehaviour {
         if(!hasObstacleInFront(nextLocation))
             transform.DOMove(transform.position + nextLocation, tweenSpeed).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
         
-        
-        
-
         //Broadcast to terrain generator.
         Parameters parameters = new Parameters();
         parameters.PutExtra(EventNames.FinalGameEvents.PARAM_PLAYER_X_POSITION, this.transform.position.x);
