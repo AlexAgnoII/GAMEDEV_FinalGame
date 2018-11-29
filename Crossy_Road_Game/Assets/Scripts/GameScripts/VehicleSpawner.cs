@@ -34,8 +34,8 @@ public class VehicleSpawner : MonoBehaviour {
         this.maxSpawnTime = 4.0f;
         this.speed = Random.Range(2.0f, 8.0f);
     }
-	
-	private IEnumerator SpawnVehicle()
+
+    private IEnumerator SpawnVehicle()
     {
         GameObject movingObstacle;
         int vehicleIndex = 0;

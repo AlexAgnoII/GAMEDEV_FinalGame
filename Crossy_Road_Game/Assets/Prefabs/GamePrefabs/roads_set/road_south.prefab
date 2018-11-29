@@ -440,11 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingObstacleList:
-  - {fileID: 1717538419887418, guid: 9febb0a932256584eb1d1b489f672f1f, type: 2}
-  - {fileID: 1268852650152276, guid: 4cf6b12bcdfb2264280d2ddd3438ee45, type: 2}
-  - {fileID: 1102848051365884, guid: a4478c9ec94dd434a8ca253652be0e3a, type: 2}
+  - {fileID: 1954179148524010, guid: e1dc6e9962e50f844bbe948b282d3053, type: 2}
+  - {fileID: 1546295610527460, guid: 6628d300e69be5547a99cab42268941d, type: 2}
+  - {fileID: 1024906127086782, guid: c828d61f57211844c966c5298e94e153, type: 2}
   spawnLocation: {fileID: 4977694156182288}
-  minSpawnTime: 1
-  maxSpawnTime: 4
-  minObstacleSpeed: 2
-  maxObstacleSpeed: 8
