@@ -14,6 +14,7 @@ public class TerrainGenerator : MonoBehaviour {
 
     void Start () {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD, this.SpawnTerrain);
+        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_DIFFICULTY_CHANGE, this.ChangeDifficulty);
 
         //Create first set of terrains.
         for (int i = 0; i < MAX_TERRAIN_COUNT; i++)
@@ -25,8 +26,16 @@ public class TerrainGenerator : MonoBehaviour {
     private void OnDestroy()
     {
         EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_PLAYER_MOVE_FORWARD);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_DIFFICULTY_CHANGE);
     }
 
+    private void ChangeDifficulty()
+    {
+        // current function spawn = next difficulty function spawn.
+    }
+
+
+    //this function will serve as the HARDEST TERRAIN GENERATOR EVER.
     public void SpawnTerrain(Parameters param)
     {
         float playerXPos = 0;

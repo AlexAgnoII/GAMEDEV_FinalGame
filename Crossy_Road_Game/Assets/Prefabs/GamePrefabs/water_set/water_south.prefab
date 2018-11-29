@@ -38,8 +38,8 @@ GameObject:
   - component: {fileID: 23188144442367818}
   - component: {fileID: 33847329505786322}
   - component: {fileID: 114455289011461024}
-  - component: {fileID: 114335633458127202}
   - component: {fileID: 65837992262612160}
+  - component: {fileID: 114755790917494858}
   m_Layer: 0
   m_Name: water_south
   m_TagString: SOUTH_BOUND_WATER
@@ -128,25 +128,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 25}
   m_Center: {x: 0, y: -0.000000059604645, z: 0}
---- !u!114 &114335633458127202
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435712539566752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed6456a92e45c543bc85309f35edadd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingObstacleList:
-  - {fileID: 1367144275505782, guid: ada85655fef2a6e4987d128ea99fed4c, type: 2}
-  - {fileID: 1394284901795564, guid: e4b1a79df1500c74fb824e59b5cc972b, type: 2}
-  spawnLocation: {fileID: 4354392831182920}
-  minSpawnTime: 1
-  maxSpawnTime: 4
-  minObstacleSpeed: 2
-  maxObstacleSpeed: 8
 --- !u!114 &114455289011461024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,3 +426,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &114755790917494858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1435712539566752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab679ee3a6cd0240902fd9f9ecc320e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movingObstacleList:
+  - {fileID: 1367144275505782, guid: ada85655fef2a6e4987d128ea99fed4c, type: 2}
+  - {fileID: 1394284901795564, guid: e4b1a79df1500c74fb824e59b5cc972b, type: 2}
+  spawnLocation: {fileID: 4354392831182920}
