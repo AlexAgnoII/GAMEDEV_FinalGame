@@ -7,12 +7,9 @@ public class levelLoader : MonoBehaviour {
     public Slider slider;
     public Text pText;
 
-    private void Start()
-    {
-        loadLevel(1);
-    }
     public void loadLevel(int sceneBuild)
     {
+        Debug.Log("Working");
         StartCoroutine(LoadAsync(sceneBuild));
         
          
