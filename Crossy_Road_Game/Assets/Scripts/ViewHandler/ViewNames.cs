@@ -15,7 +15,7 @@ public class ViewNames {
     public const string DOTA_UI_SCREEN = "DotaUIScreen";
     public const string SKILL_UI_SCREEN = "SkillUIScreen";
     public const string MAIN_MENU_SCENE = "MainMenu";
-    public const string GAME_SCENE = "GameScene";
+    public const string PAUSE_SCREEN = "pauseScreen";
 
     public class DialogNames {
 		public const string TWO_CHOICE_DIALOG_NAME = "TwoChoiceDialog";

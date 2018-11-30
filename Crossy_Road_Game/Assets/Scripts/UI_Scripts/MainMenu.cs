@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainMenu : View {
+public class MainMenu : View
+{
 
     public void OnPlayClicked()
     {
-        LoadManager.Instance.LoadScene(ViewNames.GAME_SCENE);
+        LoadManager.Instance.LoadScene(SceneNames.GAME_SCENE);
     }
 
     public void OnQuitClicked()
