@@ -20,18 +20,24 @@ public class gameUI : MonoBehaviour {
     void Update () {
         if (timer > 0)
         {
+            Debug.Log(timer);
             timer -= Time.deltaTime;
             timeText.text = "" + (int)timer;
+            if (timer-1 < 0)
+            {
+                timeText.text = "GO!!";
+                EventBroadcaster.Instance.PostEvent(EventNames.ON_TIMER_DONE);
+            }
         }
         else
         {
             timeText.text = "";
-            EventBroadcaster.Instance.PostEvent(EventNames.ON_TIMER_DONE);
         }
     }
 
     void iterateScore(Parameters param)
     {
+        timeText.text = "";
         int score = param.GetIntExtra(EventNames.FinalGameEvents.PARAM_PLAYER_SCORE, -1);
         textScore.text = "SCORE: " + score;
     }
