@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundEffectsScript : MonoBehaviour {
 
@@ -13,12 +14,14 @@ public class SoundEffectsScript : MonoBehaviour {
     [SerializeField] private AudioClip crashSound;
     [SerializeField] private AudioClip nightSound;
     [SerializeField] private AudioClip morningSound;
+    [SerializeField] private AudioMixer mixer;
 
     private AudioSource effectsAudioSource;
     private AudioSource hoppingAudioSource;
+    private AudioSource deathAudioSource;
     private AudioSource nightSoundSource;
     private AudioSource morningSoundSource;
-
+    
     bool night;
 
     // Use this for initialization
@@ -33,8 +36,11 @@ public class SoundEffectsScript : MonoBehaviour {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND, this.playHoppingSound);
 
         hoppingAudioSource = GetComponent<AudioSource>();
+        hoppingAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Hopping")[0];
         effectsAudioSource = gameObject.AddComponent<AudioSource>();
-        effectsAudioSource.volume = 1;
+        effectsAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+        deathAudioSource = gameObject.AddComponent<AudioSource>();
+        deathAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Death")[0];
         nightSoundSource = AddAudio(nightSound, true);
         morningSoundSource = AddAudio(morningSound, true);
         
@@ -88,8 +94,8 @@ public class SoundEffectsScript : MonoBehaviour {
     }
     void playDeathSound()
     {
-        hoppingAudioSource.clip = deathSound;
-        hoppingAudioSource.Play();
+        deathAudioSource.clip = deathSound;
+        deathAudioSource.Play();
     }
 
     public void playBGM(Parameters param)

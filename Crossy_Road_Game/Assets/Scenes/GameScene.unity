@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,7 +257,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6126
+  m_Name: pb_Mesh29354
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1817,6 +1817,7 @@ MonoBehaviour:
   crashSound: {fileID: 0}
   nightSound: {fileID: 8300000, guid: 44811451fbaaa5240a12b387e0d6ed48, type: 3}
   morningSound: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 9259edd641254894f91ea5da310207bf, type: 2}
 --- !u!82 &382653073
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2082,7 +2083,6 @@ GameObject:
   - component: {fileID: 386800227}
   - component: {fileID: 386800232}
   - component: {fileID: 386800233}
-  - component: {fileID: 386800235}
   - component: {fileID: 386800234}
   - component: {fileID: 386800226}
   m_Layer: 0
@@ -2511,101 +2511,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Center: {x: 0, y: -0.02, z: 0}
---- !u!82 &386800235
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 386800225}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d011052941014fb409c23c1f41890c2a, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &388682017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4609208954773616, guid: 4cf6b12bcdfb2264280d2ddd3438ee45,
@@ -2707,10 +2612,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab466732017aa244293eb5813a99c95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxCarSpeed: 0
-  minCarSpeed: 0
-  maxLogSpeed: 0
-  minLogSpeed: 0
+  additive_speed: 3
+  movingSpeed: 3
+  supa_fast_boi: 50
+  time_reduction: 0.5
   maxSpawnTime: 0
   minSpawnTime: 0
 --- !u!1 &472516509
@@ -31185,7 +31090,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6074
+  m_Name: pb_Mesh29306
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -31340,7 +31245,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-5258
+  m_Name: pb_Mesh-14776948
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -31500,7 +31405,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2118
+  m_Name: pb_Mesh-14776916
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -32573,7 +32478,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-4914
+  m_Name: pb_Mesh-14776436
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -55305,7 +55210,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6270
+  m_Name: pb_Mesh29496
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -57340,7 +57245,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-5100
+  m_Name: pb_Mesh-14776692
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -57535,7 +57440,8 @@ AudioSource:
   m_GameObject: {fileID: 1946693178}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243794898904859218, guid: 9259edd641254894f91ea5da310207bf,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 055cbd83cd95d434c91f072d3a502f3f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.7
@@ -58107,7 +58013,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6176
+  m_Name: pb_Mesh29402
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
