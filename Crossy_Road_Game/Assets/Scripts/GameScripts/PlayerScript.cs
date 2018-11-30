@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour {
     private bool isAlive;
     private bool once;
     private bool onceTrigger;
+    private bool killedByVehicle;
     private float maxX;
 
 
@@ -28,11 +29,14 @@ public class PlayerScript : MonoBehaviour {
         isAlive = true;
         movement = new Vector3(0, 0, 0);
         isHopping = false;
+        killedByVehicle = false;
         maxX = 0.0f;
 
         playerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         myCollider = GetComponent<SphereCollider>();
+        this.GetComponent<SphereCollider>().enabled = true;
+        this.GetComponent<Rigidbody>().useGravity = true;
 
     }
 
@@ -95,7 +99,8 @@ public class PlayerScript : MonoBehaviour {
         if(!isAlive && once)
         {
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND);
-            this.transform.DOScale(new Vector3(0, 0, 0), 0.2f).OnComplete(explodePlayer);
+            this.GetComponent<Rigidbody>().useGravity = false;
+            this.transform.DOScale(new Vector3(0, 0, 0), 0.1f).OnComplete(explodePlayer);
 
 
             once = false;
@@ -104,7 +109,15 @@ public class PlayerScript : MonoBehaviour {
 
     private void explodePlayer()
     {
-        Debug.Log("BOOM");
+        //since player scales down to 0
+        //Make rigid body gravity false
+        //disable collider. (thiss enures particle effect will work perfectly without hitting player's collider.
+        this.GetComponent<SphereCollider>().enabled = false;
+
+        if (killedByVehicle)
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_EXPLOD_FROM_CAR);
+        else
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_SPLASH_FROM_WATER);
     }
 
     private float genWholeNumPosition(float notWholeZ)
@@ -185,11 +198,12 @@ public class PlayerScript : MonoBehaviour {
             {
                 
                 case "VEHICLE": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_CRASH_SOUND);
-                    Debug.Log("at switch case");
+                    killedByVehicle = true;
                     break;
                 case "NORTH_BOUND_WATER":
-                case "SOUTH_BOUND_WATER": EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
-                    Debug.Log("at switch case");
+                case "SOUTH_BOUND_WATER":
+                    EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
+                    killedByVehicle = false;
                     break;
             }
             //disable camera movement + player movement.

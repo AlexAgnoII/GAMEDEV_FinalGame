@@ -19,7 +19,9 @@ public class EventNames {
         public const string ON_PLAYER_MOVE_FORWARD = "ON_PLAYER_MOVE_FORWARD";
         public const string ON_CHANGE_DIRECTIONAL_LIGHT = "ON_CHANGE_DIRECTIONAL_LIGHT";
         public const string ON_UPDATE_SCORE = "ON_UPDATE_SCORE";
-        public const string ON_SEND_CURRENT_STEPS = "ON_SEND_CURRENT_STEPS"; //for playerscript > gamescript telling him to change difficulty
+        public const string ON_SEND_CURRENT_STEPS = "ON_SEND_CURRENT_STEPS";
+        public const string ON_PLAYER_EXPLOD_FROM_CAR = "ON_PLAYER_EXPLOD_FROM_CAR";
+        public const string ON_PLAYER_SPLASH_FROM_WATER = "ON_PLAYER_SPLASH_FROM_WATER";
 
         public const string PARAM_PLAYER_SCORE = "PARAM_PLAYER_SCORE";
         public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
