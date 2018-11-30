@@ -13,7 +13,7 @@ public class EventNames {
 	public const string ON_PICTURE_CLICKED = "ON_PICTURE_CLICKED";
     public const string ON_PAUSE_NAME = "ON_PAUSE";
     public const string ON_RESUME_NAME = "ON_RESUME";
-
+    public const string ON_REPLAY_NAME = "ON_REPLAY";
     public class FinalGameEvents
     {
         public const string ON_PLAYER_MOVE_FORWARD = "ON_PLAYER_MOVE_FORWARD";

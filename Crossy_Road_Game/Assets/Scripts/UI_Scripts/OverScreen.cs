@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseScreen : View
+public class OverScreen : View
 {
 
     // Use this for initialization
@@ -17,16 +17,17 @@ public class PauseScreen : View
 
     }
 
-    public void OnResumeClicked()
+    public void OnReplayClicked()
     {
 
         Parameters updateLineParams = new Parameters();
-        updateLineParams.PutExtra(EventNames.ON_RESUME_NAME, 1);
+        updateLineParams.PutExtra(EventNames.ON_REPLAY_NAME, 1);
         EventBroadcaster.Instance.PostEvent(EventNames.ON_RESUME_NAME, updateLineParams);
         Parameters updateLineParams2 = new Parameters();
         updateLineParams.PutExtra(EventNames.ON_PAUSE_NAME, 0);
         EventBroadcaster.Instance.PostEvent(EventNames.ON_PAUSE_NAME, updateLineParams2);
         ViewHandler.Instance.HideCurrentView();
+        LoadManager.Instance.LoadScene(SceneNames.GAME_SCENE);
     }
 
     public void OnMainMenuClicked()
