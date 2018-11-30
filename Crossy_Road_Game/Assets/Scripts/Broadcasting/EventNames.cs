@@ -15,12 +15,13 @@ public class EventNames {
     public class FinalGameEvents
     {
         public const string ON_PLAYER_MOVE_FORWARD = "ON_PLAYER_MOVE_FORWARD";
-        public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
         public const string ON_CHANGE_DIRECTIONAL_LIGHT = "ON_CHANGE_DIRECTIONAL_LIGHT";
         public const string ON_UPDATE_SCORE = "ON_UPDATE_SCORE";
-        public const string PLAYER_SCORE = "PLAYER_SCORE";
-        public const string ON_DIFFICULTY_CHANGE = "ON_DIFFICULTY_CHANGE"; //for gamescript > terrainGenerator to make the game harder.
         public const string ON_SEND_CURRENT_STEPS = "ON_SEND_CURRENT_STEPS"; //for playerscript > gamescript telling him to change difficulty
+
+        public const string PARAM_PLAYER_SCORE = "PARAM_PLAYER_SCORE";
+        public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
+
 
 
 

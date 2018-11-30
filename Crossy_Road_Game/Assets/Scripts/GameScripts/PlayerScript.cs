@@ -79,9 +79,10 @@ public class PlayerScript : MonoBehaviour {
             Debug.Log("Score: " + maxX);
 
             Parameters param = new Parameters();
-            param.PutExtra(EventNames.FinalGameEvents.PLAYER_SCORE, maxX);
+            param.PutExtra(EventNames.FinalGameEvents.PARAM_PLAYER_SCORE, (int) maxX);
 
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_UPDATE_SCORE, param);
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_SEND_CURRENT_STEPS, param);
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_CHANGE_DIRECTIONAL_LIGHT);
         }
 
