@@ -17,6 +17,7 @@ public class SoundEffectsScript : MonoBehaviour {
     [SerializeField] private AudioMixer mixer;
 
     private AudioSource effectsAudioSource;
+    private AudioSource crashAudioSource;
     private AudioSource hoppingAudioSource;
     private AudioSource deathAudioSource;
     private AudioSource nightSoundSource;
@@ -37,13 +38,22 @@ public class SoundEffectsScript : MonoBehaviour {
 
         hoppingAudioSource = GetComponent<AudioSource>();
         hoppingAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Hopping")[0];
+
         effectsAudioSource = gameObject.AddComponent<AudioSource>();
         effectsAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+
+        crashAudioSource = gameObject.AddComponent<AudioSource>();
+        crashAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("SFX")[0];
+
         deathAudioSource = gameObject.AddComponent<AudioSource>();
         deathAudioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Death")[0];
+
         nightSoundSource = AddAudio(nightSound, true);
         morningSoundSource = AddAudio(morningSound, true);
-        
+
+        morningSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("AmbientNoise")[0];
+        nightSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("AmbientNoise")[0];
+        playBGM();
     }
 
     private void OnDestroy()
@@ -66,8 +76,8 @@ public class SoundEffectsScript : MonoBehaviour {
 
     void playCrashSound()
     {
-        effectsAudioSource.clip = crashSound;
-        effectsAudioSource.Play();
+        crashAudioSource.clip = crashSound;
+        crashAudioSource.Play();
     }
 
     void playHoppingSound()
@@ -98,7 +108,11 @@ public class SoundEffectsScript : MonoBehaviour {
         deathAudioSource.Play();
     }
 
-    public void playBGM(Parameters param)
+    void playBGM()
+    {
+        morningSoundSource.Play();
+    }
+ /*   public void playBGM(Parameters param)
     {
         night = param.GetBoolExtra(DirectionalLightScript.DAY_PHASE, false);
 
@@ -112,7 +126,7 @@ public class SoundEffectsScript : MonoBehaviour {
             nightSoundSource.Stop();
             morningSoundSource.Play();
         }
-    }
+    }*/
 
     public AudioSource AddAudio(AudioClip audioClip, bool loop)
     {
