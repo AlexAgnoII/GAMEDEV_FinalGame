@@ -32,17 +32,8 @@ public class OverScreen : View
 
     public void OnMainMenuClicked()
     {
-        if (ViewHandler.Instance.IsViewActive("pauseScreen"))
-        {
-            TwoChoiceDialog exitDialog = (TwoChoiceDialog)DialogBuilder.Create(DialogBuilder.DialogType.CHOICE_DIALOG);
-            exitDialog.SetMessage("Are you sure? All progress will be lost.");
-            exitDialog.SetConfirmText("Confirm");
-            exitDialog.SetCancelText("Cancel");
 
-            exitDialog.SetOnConfirmListener(() =>
-            {
-                LoadManager.Instance.LoadScene(SceneNames.MAIN_MENU_SCENE);
-            });
-        }
+     LoadManager.Instance.LoadScene(SceneNames.MAIN_MENU_SCENE);
+
     }
 }
