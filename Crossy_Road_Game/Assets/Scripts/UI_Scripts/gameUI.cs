@@ -7,9 +7,15 @@ public class gameUI : MonoBehaviour {
     private float timer = 4.0f;
     [SerializeField] private Text textScore;
     [SerializeField] private Text timeText;
+
+    private bool once;
+
     // Use this for initialization
     void Start () {
+        once = true;
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_UPDATE_SCORE, this.iterateScore);
+        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_GAME_END, this.showGameOver);
+        
     }
     void Destroy()
     {
@@ -20,19 +26,28 @@ public class gameUI : MonoBehaviour {
     void Update () {
         if (timer > 0)
         {
-            Debug.Log(timer);
             timer -= Time.deltaTime;
             timeText.text = "" + (int)timer;
             if (timer-1 < 0)
             {
                 timeText.text = "GO!!";
-                EventBroadcaster.Instance.PostEvent(EventNames.ON_TIMER_DONE);
+                
             }
         }
         else
         {
             timeText.text = "";
+            if (once) {
+                Debug.Log("once only");
+                EventBroadcaster.Instance.PostEvent(EventNames.ON_TIMER_DONE);
+                once = !once;
+            }
         }
+    }
+
+    private void showGameOver()
+    {
+        ViewHandler.Instance.Show("gameOverScreen", true);
     }
 
     void iterateScore(Parameters param)

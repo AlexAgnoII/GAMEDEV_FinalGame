@@ -8,17 +8,29 @@ public class MovingObstacleScript : MonoBehaviour {
     private float speed;
     private Vector3 directionGo = Vector3.forward;
 
+    private bool shouldMove;
+
     // Update is called once per frame
     void FixedUpdate () {
-        this.transform.Translate(speed * Time.deltaTime * directionGo);
+            this.transform.Translate(speed * Time.deltaTime * directionGo);
 
-        if(this.transform.position.z > distanceOfDeath || 
-           this.transform.position.z < -distanceOfDeath)
-        {
-            //kill gameobject once he passed through the entire lane.
-            Destroy(gameObject);
-        }
-	}
+            if(this.transform.position.z > distanceOfDeath || 
+               this.transform.position.z < -distanceOfDeath)
+            {
+                //kill gameobject once he passed through the entire lane.
+                Destroy(gameObject);
+            }
+    }
+
+    private void canMove()
+    {
+        this.shouldMove = true;
+    }
+
+    private void cannotMove()
+    {
+        this.shouldMove = false;
+    }
 
     public void setDirection(Vector3 direction)
     {

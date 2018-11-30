@@ -20,6 +20,7 @@ public class EventNames {
         public const string ON_SEND_CURRENT_STEPS = "ON_SEND_CURRENT_STEPS";
         public const string ON_PLAYER_EXPLOD_FROM_CAR = "ON_PLAYER_EXPLOD_FROM_CAR";
         public const string ON_PLAYER_SPLASH_FROM_WATER = "ON_PLAYER_SPLASH_FROM_WATER";
+        public const string ON_GAME_END = "ON_GAME_END";
 
         public const string PARAM_PLAYER_SCORE = "PARAM_PLAYER_SCORE";
         public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";

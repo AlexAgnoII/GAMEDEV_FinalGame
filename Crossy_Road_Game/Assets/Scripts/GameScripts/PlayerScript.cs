@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour {
 
     [SerializeField] private AudioClip hopSound;
     [SerializeField] private float tweenSpeed;
+    [SerializeField] private float player_max_z_before_death = 16.0f;
     private Animator playerAnimator;
     private AudioSource audioSource;
     private SphereCollider myCollider;
@@ -24,7 +25,7 @@ public class PlayerScript : MonoBehaviour {
 
     private void Start()
     {
-        
+        player_max_z_before_death = 16.0f;
         once = true;
         onceTrigger = true;
         isAlive = true;
@@ -41,16 +42,28 @@ public class PlayerScript : MonoBehaviour {
         this.GetComponent<Rigidbody>().useGravity = true;
 
         EventBroadcaster.Instance.AddObserver(EventNames.ON_TIMER_DONE, this.AllowPlayerToPlay);
-       
+        /* EventBroadcaster.Instance.AddObserver(EventNames.ON_PAUSE_NAME, this.DisallowPlayerToPlay);
+         EventBroadcaster.Instance.AddObserver(EventNames.ON_RESUME_NAME, this.AllowPlayerToPlay);*/ //depracated for now.
+
     }
 
     private void OnDestroy()
     {
         EventBroadcaster.Instance.RemoveObserver(EventNames.ON_TIMER_DONE);
+        /*EventBroadcaster.Instance.RemoveObserver(EventNames.ON_PAUSE_NAME);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_RESUME_NAME);*/ //depracated for now.
     }
 
     // Update is called once per frame
     void Update () {
+
+        //If went outofbounds with log, dead.
+        if(this.transform.position.z < -this.player_max_z_before_death ||
+            this.transform.position.z > this.player_max_z_before_death)
+        {
+            this.isAlive = false;
+        }
+
         if(this.isAlive && this.canPlay)
         {
             if(Input.GetKeyDown(KeyCode.W) && !isHopping)
@@ -99,14 +112,16 @@ public class PlayerScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
+
+        //Player DEATH
         if(!isAlive && once)
         {
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND);
             this.GetComponent<Rigidbody>().useGravity = false;
             this.transform.DOScale(new Vector3(0, 0, 0), 0.1f).OnComplete(explodePlayer);
-
-
             once = false;
+
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
         }
     }
 
@@ -248,6 +263,11 @@ public class PlayerScript : MonoBehaviour {
     private void AllowPlayerToPlay()
     {
         this.canPlay = true;
+    }
+
+    private void DisallowPlayerToPlay()
+    {
+        this.canPlay = false;
     }
 
 

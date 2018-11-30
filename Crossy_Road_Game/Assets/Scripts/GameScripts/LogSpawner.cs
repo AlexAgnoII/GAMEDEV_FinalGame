@@ -14,6 +14,8 @@ public class LogSpawner : MonoBehaviour {
     private Vector3 directionTowards;
     private int logSize;
 
+    private bool shouldSpawn;
+
 
     void Start()
     {
@@ -24,7 +26,16 @@ public class LogSpawner : MonoBehaviour {
 
         else directionTowards = Vector3.forward;
 
+        EventBroadcaster.Instance.AddObserver(EventNames.ON_PAUSE_NAME, cannotSpawn);
+        EventBroadcaster.Instance.AddObserver(EventNames.ON_RESUME_NAME, canSpawn);
+
         StartCoroutine(SpawnLog());
+    }
+
+    private void OnDestroy()
+    {
+        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_PAUSE_NAME);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_RESUME_NAME);
     }
 
     private void defaultBetaValues()
@@ -32,6 +43,16 @@ public class LogSpawner : MonoBehaviour {
         this.minSpawnTime = 2.0f;
         this.maxSpawnTime = 4.0f;
         this.speed = Random.Range(2.0f, 4.0f);
+    }
+
+    private void canSpawn()
+    {
+        this.shouldSpawn = true;
+    }
+
+    private void cannotSpawn()
+    {
+        this.shouldSpawn = false;
     }
 
 
@@ -42,12 +63,12 @@ public class LogSpawner : MonoBehaviour {
 
         while (true)
         {
-            vehicleIndex = Random.Range(0, logSize);
+             vehicleIndex = Random.Range(0, logSize);
 
-            yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-            movingObstacle = Instantiate(movingObstacleList[vehicleIndex], spawnLocation.position, Quaternion.identity, spawnLocation);
-            movingObstacle.GetComponent<MovingObstacleScript>().setDirection(directionTowards);
-            movingObstacle.GetComponent<MovingObstacleScript>().setSpeed(speed);
+             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
+             movingObstacle = Instantiate(movingObstacleList[vehicleIndex], spawnLocation.position, Quaternion.identity, spawnLocation);
+             movingObstacle.GetComponent<MovingObstacleScript>().setDirection(directionTowards);
+             movingObstacle.GetComponent<MovingObstacleScript>().setSpeed(speed);
         }
     }
 

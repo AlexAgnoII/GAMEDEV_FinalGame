@@ -14,9 +14,11 @@ public class VehicleSpawner : MonoBehaviour {
     private Vector3 directionTowards;
     private int vehicleSize;
 
+    private bool shouldSpawn;
+
 
 	void Start () {
-
+        shouldSpawn = true;
         vehicleSize = movingObstacleList.Count;
 
         if(string.Equals(this.tag, PrefabTags.TerrainGroup.SOUTH_BOUND_ROAD))
@@ -24,14 +26,29 @@ public class VehicleSpawner : MonoBehaviour {
         
         else directionTowards = Vector3.forward;
 
+
         StartCoroutine(SpawnVehicle());
 	}
+
+    private void OnDestroy()
+    {
+    }
 
     private void defaultBetaValues()
     {
         this.minSpawnTime = 1.0f;
         this.maxSpawnTime = 4.0f;
         this.speed = Random.Range(2.0f, 8.0f);
+    }
+   
+    private void canSpawn()
+    {
+        this.shouldSpawn = true;
+    }
+
+    private void cannotSpawn()
+    {
+        this.shouldSpawn = false;
     }
 
     private IEnumerator SpawnVehicle()

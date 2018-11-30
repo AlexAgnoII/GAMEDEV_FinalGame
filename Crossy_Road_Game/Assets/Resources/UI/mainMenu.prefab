@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becb25894efe9f6408bd69bf1024637b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asRootScreen: 0
+  asRootScreen: 1
   entranceType: 1
   exitType: 1
 --- !u!114 &114595958116084584
