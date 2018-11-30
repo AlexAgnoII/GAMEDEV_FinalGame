@@ -11,7 +11,8 @@ public class EventNames {
 	public const string ON_WRONG_MATCH = "ON_WRONG_MATCH";
 	public const string ON_INCREASE_LEVEL = "ON_INCREASE_LEVEL";
 	public const string ON_PICTURE_CLICKED = "ON_PICTURE_CLICKED";
-
+    public const string ON_PAUSE_NAME = "ON_PAUSE";
+    public const string ON_RESUME_NAME = "ON_RESUME";
     public class FinalGameEvents
     {
         public const string ON_PLAYER_MOVE_FORWARD = "ON_PLAYER_MOVE_FORWARD";
