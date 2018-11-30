@@ -17,8 +17,6 @@ public class LogSpawner : MonoBehaviour {
 
     void Start()
     {
-        this.defaultBetaValues(); //remove when balance iss done.
-
         logSize = movingObstacleList.Count;
 
         if (string.Equals(this.tag, PrefabTags.TerrainGroup.SOUTH_BOUND_WATER))
@@ -53,10 +51,10 @@ public class LogSpawner : MonoBehaviour {
         }
     }
 
-    private void setLogData(float minSpawnTime, float maxSpawnTime, float speed)
+    public void setLogData(float minSpawnTime, float maxSpawnTime, float speed)
     {
-        this.minSpawnTime = 2.0f;
-        this.maxSpawnTime = 4.0f;
+        this.minSpawnTime = minSpawnTime;
+        this.maxSpawnTime = maxSpawnTime;
         this.speed = speed;
     }
 }

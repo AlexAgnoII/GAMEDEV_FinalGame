@@ -16,7 +16,6 @@ public class VehicleSpawner : MonoBehaviour {
 
 
 	void Start () {
-        this.defaultBetaValues(); //remove when balance iss done.
 
         vehicleSize = movingObstacleList.Count;
 
