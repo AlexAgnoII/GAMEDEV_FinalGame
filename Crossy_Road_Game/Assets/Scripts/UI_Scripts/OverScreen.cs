@@ -27,7 +27,7 @@ public class OverScreen : View
         updateLineParams.PutExtra(EventNames.ON_PAUSE_NAME, 0);
         EventBroadcaster.Instance.PostEvent(EventNames.ON_PAUSE_NAME, updateLineParams2);
         ViewHandler.Instance.HideCurrentView();
-        LoadManager.Instance.LoadScene(SceneNames.GAME_SCENE);
+        LoadManager.Instance.LoadScene(SceneNames.LOAD_SCENE);
     }
 
     public void OnMainMenuClicked()
