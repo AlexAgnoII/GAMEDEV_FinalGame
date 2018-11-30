@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour {
 
-    private const float STEPS_REQUIRED_FOR_NEXT_DIFFICULTY = 20.0f; //required steps to increase difficulties.
-    private float steps_multiplier = 1.0f; //multiplier for calculating nex difficulty e.g. 30 = 1, 60 = 2 etc.
+    private const int LEVEL_1_REQ_STEPS = 20;
+    private const int LEVEL_2_REQ_STEPS = 40;
+    private const int LEVEL_3_REQ_STEPS = 60;
+    private const int LEVEL_4_REQ_STEPS = 80;
+    private const int LEVEL_5_REQ_STEPS = 100;
 
+    [SerializeField] private float multiplier = 1.0f;
     [SerializeField] private float additive_speed = 3.0f;
     [SerializeField] private float movingSpeed = 3.0f;
     [SerializeField] private float supa_fast_boi = 50f;
@@ -18,32 +22,53 @@ public class GameManagerScript : MonoBehaviour {
     private void Start()
     {
         //set observer..
+        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_DIFFICULTY_CHANGE, this.checkForNextDifficulty);
     }
 
     private void OnDestroy()
     {
         //destroy observers..
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_DIFFICULTY_CHANGE);
     }
 
-    private void increaseDifficulty()
+    private void checkForNextDifficulty(Parameters param)
     {
-        //has to be a range since we're dealing with a float value.
-        //if >= 20 <=39
-        //
+        int currentSteps = (int) param.GetFloatExtra(EventNames.FinalGameEvents.ON_SEND_CURRENT_STEPS, -1.0f);
 
-        //if >= 40 <= 59
-
-
-        //if >= 60 <= 79
-
-
-        //if >= 80 <= 99
-
-
-        //if 100+
-
+        if(currentSteps >= LEVEL_1_REQ_STEPS)
+        {
+            increaseDifficulty(currentSteps);
+        }
+        
     }
 
+    private void increaseDifficulty(int steps)
+    {
+        switch(steps)
+        {
+            case LEVEL_1_REQ_STEPS: break;
+            case LEVEL_2_REQ_STEPS: break;
+            case LEVEL_3_REQ_STEPS: break;
+            case LEVEL_4_REQ_STEPS: break;
+            case LEVEL_5_REQ_STEPS: break;
+            default: break; //default level (0-19)
+        }
+    }
+
+    private void increaseMultiplier()
+    {
+        this.multiplier += 1.0f;
+    }
+
+    private float speedModifier()
+    {
+        return this.movingSpeed + (additive_speed * this.multiplier);
+    }
+
+    private float timeModifier()
+    {
+        return this.maxSpawnTime - (time_reduction * this.multiplier);
+    }
 
     private void SendDIfficultyChange()
     {

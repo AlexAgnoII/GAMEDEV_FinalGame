@@ -19,7 +19,11 @@ public class EventNames {
         public const string ON_CHANGE_DIRECTIONAL_LIGHT = "ON_CHANGE_DIRECTIONAL_LIGHT";
         public const string ON_UPDATE_SCORE = "ON_UPDATE_SCORE";
         public const string PLAYER_SCORE = "PLAYER_SCORE";
-        public const string ON_DIFFICULTY_CHANGE = "ON_DIFFICULTY_CHANGE";
+        public const string ON_DIFFICULTY_CHANGE = "ON_DIFFICULTY_CHANGE"; //for gamescript > terrainGenerator to make the game harder.
+        public const string ON_SEND_CURRENT_STEPS = "ON_SEND_CURRENT_STEPS"; //for playerscript > gamescript telling him to change difficulty
+
+
+
     }
 
     public class FinalGameAudioEvents
