@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour {
     private bool onceTrigger;
     private bool killedByVehicle;
     private float maxX;
+    private bool canPlay;
 
 
     private void Start()
@@ -30,6 +31,7 @@ public class PlayerScript : MonoBehaviour {
         movement = new Vector3(0, 0, 0);
         isHopping = false;
         killedByVehicle = false;
+        canPlay = false;
         maxX = 0.0f;
 
         playerAnimator = GetComponent<Animator>();
@@ -38,16 +40,18 @@ public class PlayerScript : MonoBehaviour {
         this.GetComponent<SphereCollider>().enabled = true;
         this.GetComponent<Rigidbody>().useGravity = true;
 
+        EventBroadcaster.Instance.AddObserver(EventNames.ON_TIMER_DONE, this.AllowPlayerToPlay);
+       
     }
 
     private void OnDestroy()
     {
-        
+        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_TIMER_DONE);
     }
 
     // Update is called once per frame
     void Update () {
-        if(isAlive)
+        if(this.isAlive && this.canPlay)
         {
             if(Input.GetKeyDown(KeyCode.W) && !isHopping)
             {
@@ -80,7 +84,6 @@ public class PlayerScript : MonoBehaviour {
         if(maxX < Math.Floor(this.transform.position.x) && maxX >= 0)
         {
             maxX = (float) Math.Floor(this.transform.position.x);
-            Debug.Log("Score: " + maxX);
 
             Parameters param = new Parameters();
             param.PutExtra(EventNames.FinalGameEvents.PARAM_PLAYER_SCORE, (int) maxX);
@@ -192,8 +195,6 @@ public class PlayerScript : MonoBehaviour {
         {
             onceTrigger = !onceTrigger;
 
-
-            Debug.Log("Killed by: " + other.tag);
             switch (other.tag)
             {
                 
@@ -244,7 +245,10 @@ public class PlayerScript : MonoBehaviour {
         isHopping = false;
     }
 
-
+    private void AllowPlayerToPlay()
+    {
+        this.canPlay = true;
+    }
 
 
     public bool getIfAlive()
