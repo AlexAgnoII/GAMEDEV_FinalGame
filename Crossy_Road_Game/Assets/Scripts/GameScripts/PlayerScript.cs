@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour {
     [SerializeField] private AudioClip hopSound;
     [SerializeField] private float tweenSpeed;
     [SerializeField] private float player_max_z_before_death = 16.0f;
+    [SerializeField] private Transform playerHolderTransform;
     private Animator playerAnimator;
     private AudioSource audioSource;
     private SphereCollider myCollider;
@@ -103,7 +104,6 @@ public class PlayerScript : MonoBehaviour {
 
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_UPDATE_SCORE, param);
             EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_SEND_CURRENT_STEPS, param);
-            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_CHANGE_DIRECTIONAL_LIGHT);
         }
 
         //play sound of hop.
@@ -121,7 +121,7 @@ public class PlayerScript : MonoBehaviour {
             this.transform.DOScale(new Vector3(0, 0, 0), 0.1f).OnComplete(explodePlayer);
             once = false;
 
-            //EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
+            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
         }
     }
 
@@ -238,7 +238,7 @@ public class PlayerScript : MonoBehaviour {
         }
         else
         {
-            this.transform.parent = null;
+            this.transform.parent = this.playerHolderTransform;
 
             //on grass
             if (string.Equals(collision.collider.tag, PrefabTags.TerrainGroup.GRASS))

@@ -38,7 +38,7 @@ public class BackgroundMusicScript : MonoBehaviour {
     public void playBGM(Parameters param)
     {
         Debug.Log("at playBGM");
-        night = param.GetBoolExtra(DirectionalLightScript.DAY_PHASE, false);
+        night = param.GetBoolExtra(EventNames.FinalGameEvents.PARAM_NIGHT_OR_MORNING, false);
 
         if(night == true)
         {

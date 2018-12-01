@@ -53,7 +53,6 @@ public class gameUI : MonoBehaviour {
 
     void iterateScore(Parameters param)
     {
-        Debug.Log("Update score sir");
         int score = param.GetIntExtra(EventNames.FinalGameEvents.PARAM_PLAYER_SCORE, -1);
         textScore.text = "SCORE: " + score;
     }

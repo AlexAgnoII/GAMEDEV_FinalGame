@@ -22,6 +22,9 @@ public class EventNames {
         public const string ON_PLAYER_SPLASH_FROM_WATER = "ON_PLAYER_SPLASH_FROM_WATER";
         public const string ON_GAME_END = "ON_GAME_END";
 
+        public const string ON_VEHICLE_ASK_IF_MORNING = "ON_VEHICLE_ASK_IF_MORNING"; //used by vehicels to ask directional light if its morning / night. (case: when vehicle spawn and missed "on day phase")
+        public const string PARAM_NIGHT_OR_MORNING = "PARAM_NIGHT_OR_MORNING"; //value being passed by light to vehicle. true = night false = day.
+
         public const string PARAM_PLAYER_SCORE = "PARAM_PLAYER_SCORE";
         public const string PARAM_PLAYER_X_POSITION = "PARAM_PLAYER_X_POSITION";
 
@@ -35,7 +38,7 @@ public class EventNames {
         public const string ON_ROAD_SOUND = "ON_ROAD_SOUND";
         public const string ON_LOG_SOUND = "ON_LOG_SOUND";
         public const string ON_DEATH_SOUND = "ON_DEATH_SOUND";
-        public const string ON_DAY_PHASE = "ON_DAY_PHASE";
+        public const string ON_DAY_PHASE = "ON_DAY_PHASE"; //used by directional light to tell current cars if its morning / night.
         public const string ON_SPLASH_SOUND = "ON_SPLASH_SOUND";
         public const string ON_CRASH_SOUND = "ON_CRASH_SOUND";
     }
