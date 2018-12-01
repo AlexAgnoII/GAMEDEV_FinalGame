@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: c1cc8dce76eb0476e82b439c96d0892e
+guid: 66bd67f58422149e89c8d62c5e32905e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: rock_001
+    2100000: Grass_002
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Icosphere_002
+    4300000: Cube_004
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: rock_001
-    second: {fileID: 2100000, guid: 5615dcfaf6197489c9feb8b5faaddd32, type: 2}
+      name: Grass_002
+    second: {fileID: 2100000, guid: bd91a3c6e596d4dfaa30b4330e81bf88, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

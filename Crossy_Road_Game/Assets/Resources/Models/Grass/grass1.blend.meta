@@ -1,26 +1,37 @@
 fileFormatVersion: 2
-guid: ab16f8ba8c7ca4a80815af30c6e07e48
+guid: 974b4d0063db4491f80fc479e517bae6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Pot
-    100002: //RootNode
-    400000: Pot
-    400002: //RootNode
-    2100000: pot
-    2300000: Pot
-    2300002: //RootNode
-    3300000: Pot
-    3300002: //RootNode
-    4300000: Pot
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Cube_002
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_001
+    400006: Cube_002
+    2100000: Grass_001
+    2100002: Grass_002
+    2300000: //RootNode
+    2300002: Cube
+    2300004: Cube_001
+    2300006: Cube_002
+    3300000: //RootNode
+    3300002: Cube
+    3300004: Cube_001
+    3300006: Cube_002
+    4300000: Cube
+    4300002: Cube_002
+    4300004: Cube_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: pot
-    second: {fileID: 2100000, guid: 659102213b9784b9ebb6c2cf4dd4914e, type: 2}
+      name: Grass_001
+    second: {fileID: 2100000, guid: bd91a3c6e596d4dfaa30b4330e81bf88, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

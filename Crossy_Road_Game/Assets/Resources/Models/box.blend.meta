@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: c1cc8dce76eb0476e82b439c96d0892e
+guid: 98d9bd2ee57a74e05b93510e7aa0a1da
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: rock_001
+    2100000: initialShadingGroup
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Icosphere_002
+    4300000: pCube1
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: rock_001
-    second: {fileID: 2100000, guid: 5615dcfaf6197489c9feb8b5faaddd32, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
