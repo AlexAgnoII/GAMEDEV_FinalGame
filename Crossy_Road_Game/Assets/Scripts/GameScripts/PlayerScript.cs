@@ -121,7 +121,7 @@ public class PlayerScript : MonoBehaviour {
             this.transform.DOScale(new Vector3(0, 0, 0), 0.1f).OnComplete(explodePlayer);
             once = false;
 
-            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
+            //EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
         }
     }
 
