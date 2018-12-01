@@ -26,16 +26,12 @@ public class LogSpawner : MonoBehaviour {
 
         else directionTowards = Vector3.forward;
 
-        EventBroadcaster.Instance.AddObserver(EventNames.ON_PAUSE_NAME, cannotSpawn);
-        EventBroadcaster.Instance.AddObserver(EventNames.ON_RESUME_NAME, canSpawn);
 
         StartCoroutine(SpawnLog());
     }
 
     private void OnDestroy()
     {
-        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_PAUSE_NAME);
-        EventBroadcaster.Instance.RemoveObserver(EventNames.ON_RESUME_NAME);
     }
 
     private void defaultBetaValues()

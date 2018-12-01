@@ -17,9 +17,11 @@ public class gameUI : MonoBehaviour {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_GAME_END, this.showGameOver);
         
     }
-    void Destroy()
+    
+    void OnDestroy()
     {
         EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_UPDATE_SCORE);
+        EventBroadcaster.Instance.RemoveObserver(EventNames.FinalGameEvents.ON_GAME_END);
     }
 
     // Update is called once per frame
@@ -38,7 +40,6 @@ public class gameUI : MonoBehaviour {
         {
             timeText.text = "";
             if (once) {
-                Debug.Log("once only");
                 EventBroadcaster.Instance.PostEvent(EventNames.ON_TIMER_DONE);
                 once = !once;
             }
@@ -52,7 +53,7 @@ public class gameUI : MonoBehaviour {
 
     void iterateScore(Parameters param)
     {
-        timeText.text = "";
+        Debug.Log("Update score sir");
         int score = param.GetIntExtra(EventNames.FinalGameEvents.PARAM_PLAYER_SCORE, -1);
         textScore.text = "SCORE: " + score;
     }
