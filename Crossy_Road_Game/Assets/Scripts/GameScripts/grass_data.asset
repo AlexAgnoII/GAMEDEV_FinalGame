@@ -18,5 +18,9 @@ MonoBehaviour:
   - {fileID: 1124417874297038, guid: 0222613409a4c6b49995dac7d4419a41, type: 2}
   - {fileID: 1476220250538702, guid: b9e2d099136425842a7d227a2709e448, type: 2}
   - {fileID: 1711551655799892, guid: 0ddba055cd274d14ebdf146e078e043e, type: 2}
+  - {fileID: 1448685470628288, guid: 9c8ed519ea68f49288ddd4216769937e, type: 2}
+  - {fileID: 1989954204265082, guid: b97c7ccbcaa4c4d128ead6cfd93bf8ed, type: 2}
+  - {fileID: 1368848546102714, guid: 634793cdab4194daead115a73bec5011, type: 2}
+  - {fileID: 1314468557585720, guid: 6a8b17c4a75694f78a8fded3e07adaa7, type: 2}
   maxInSuccession: 3
   minInSucession: 2

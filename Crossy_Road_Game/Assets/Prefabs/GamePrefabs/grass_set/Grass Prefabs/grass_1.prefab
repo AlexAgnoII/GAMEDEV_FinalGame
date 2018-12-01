@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114971501610466866}
   - component: {fileID: 64443846034733300}
   m_Layer: 0
-  m_Name: hitbox (1)
+  m_Name: ehb_1
   m_TagString: FIXED_OBSTACLES
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 114164678698327472}
   - component: {fileID: 64870653141323778}
   m_Layer: 0
-  m_Name: hitbox (2)
+  m_Name: ehb_2
   m_TagString: FIXED_OBSTACLES
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
