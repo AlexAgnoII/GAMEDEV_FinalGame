@@ -11,9 +11,14 @@ public class PlayerParticleScript : MonoBehaviour {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_PLAYER_EXPLOD_FROM_CAR, this.playPlayerExplodeParticle);
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameEvents.ON_PLAYER_SPLASH_FROM_WATER, this.playPlayerSplashParticle);
 
+        
+	}
+
+    private void Awake()
+    {
         playerExplodeParticle.Stop();
         playerSplashParticle.Stop();
-	}
+    }
 
     private void OnDestroy()
     {
