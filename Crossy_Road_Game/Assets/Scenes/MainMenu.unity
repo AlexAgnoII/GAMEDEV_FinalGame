@@ -355,6 +355,36 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114696530765132236, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: af175aa89033b4a1d8a9f7d3aa495bb3, type: 3}
+    - target: {fileID: 224067815316601672, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2.319555
+      objectReference: {fileID: 0}
+    - target: {fileID: 224067815316601672, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224067815316601672, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 224678808989263950, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 124.9328
+      objectReference: {fileID: 0}
+    - target: {fileID: 224400663082952278, guid: 48883515b8d18ab4fa85b545030806fc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 127
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48883515b8d18ab4fa85b545030806fc, type: 2}
   m_IsPrefabAsset: 0
