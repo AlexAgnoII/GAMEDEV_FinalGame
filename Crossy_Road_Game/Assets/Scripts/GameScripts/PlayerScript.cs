@@ -107,7 +107,7 @@ public class PlayerScript : MonoBehaviour {
         }
 
         //play sound of hop.
-        EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND);
+        
     }
 
     private void FixedUpdate()
@@ -153,9 +153,9 @@ public class PlayerScript : MonoBehaviour {
     {
         playerAnimator.SetTrigger(HOP_KEY);
         isHopping = true;
-
+        EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND);
         //check if there is collision from a fixed obstacle infront of user.
-        if(!hasObstacleInFront(nextLocation))
+        if (!hasObstacleInFront(nextLocation))
             transform.DOMove(transform.position + nextLocation, tweenSpeed).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
         
         //Broadcast to terrain generator.
