@@ -121,8 +121,14 @@ public class PlayerScript : MonoBehaviour {
             this.transform.DOScale(new Vector3(0, 0, 0), 0.1f).OnComplete(explodePlayer);
             once = false;
 
-            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
+            StartCoroutine(this.ConfirmIAmDead());
         }
+    }
+
+    private IEnumerator ConfirmIAmDead()
+    {
+        yield return new WaitForSeconds(1.5f);
+        EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_GAME_END);
     }
 
     private void explodePlayer()
@@ -220,6 +226,7 @@ public class PlayerScript : MonoBehaviour {
                 case "SOUTH_BOUND_WATER":
                     EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND);
                     killedByVehicle = false;
+                    this.transform.parent = this.playerHolderTransform;
                     break;
             }
             //disable camera movement + player movement.

@@ -33,15 +33,7 @@ public class gameUI : MonoBehaviour {
 
             if(timer  > 6.0f)
             {
-                timeText.text = "Beat";
-            }
-            else if (timer > 5.0f)
-            {
-                timeText.text = "our";
-            }
-            else if(timer > 4.0f)
-            {
-                timeText.text = "highscores";
+                timeText.text = "Ready.";
             }
             else timeText.text = "" + (int)timer;
 
