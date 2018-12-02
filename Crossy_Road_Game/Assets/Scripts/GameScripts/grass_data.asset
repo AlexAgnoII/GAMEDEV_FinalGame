@@ -22,5 +22,5 @@ MonoBehaviour:
   - {fileID: 1989954204265082, guid: b97c7ccbcaa4c4d128ead6cfd93bf8ed, type: 2}
   - {fileID: 1368848546102714, guid: 634793cdab4194daead115a73bec5011, type: 2}
   - {fileID: 1314468557585720, guid: 6a8b17c4a75694f78a8fded3e07adaa7, type: 2}
-  maxInSuccession: 3
-  minInSucession: 2
+  maxInSuccession: 2
+  minInSucession: 1

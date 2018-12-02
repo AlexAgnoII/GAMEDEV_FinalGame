@@ -14,9 +14,9 @@ public class TerrainGenerator : MonoBehaviour {
 
     private const int LEVEL_1_REQ_STEPS = 10; //20
     private const int LEVEL_2_REQ_STEPS = 20; //40
-    private const int LEVEL_3_REQ_STEPS = 30; //60
-    private const int LEVEL_4_REQ_STEPS = 40; //80
-    private const int LEVEL_5_REQ_STEPS = 60; //100
+    private const int LEVEL_3_REQ_STEPS = 40; //60
+    private const int LEVEL_4_REQ_STEPS = 60; //80
+    private const int LEVEL_5_REQ_STEPS = 80; //100
 
     private const int LEVEL_0 = 0;
     private const int LEVEL_1 = 1;
@@ -212,7 +212,7 @@ public class TerrainGenerator : MonoBehaviour {
     {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(1);
-        this.newMaxSpeed = this.speedModifier(1);
+        //this.newMaxSpeed = this.speedModifier(1);
 
     }
 
