@@ -26,7 +26,7 @@ public class TerrainGenerator : MonoBehaviour {
     private const int LEVEL_5 = 5;
 
     private int currentDifficulty = 0; //0 - 5
-                                                     //Game default
+                                                     //Game default (For reference lang, this will be our super default settings.
     [SerializeField] private float additive_speed;   //3
     [SerializeField] private float movingSpeed;      //3
     [SerializeField] private float supa_fast_boi;    //50
@@ -82,14 +82,16 @@ public class TerrainGenerator : MonoBehaviour {
             switch(currentDifficulty)
             {
                 case LEVEL_1: terrainIndex = Random.Range(0, terrainData_List.Count);
-                              Level_X_TerrainSpawner(2, 1, terrainIndex, isStart);
+                              Level_X_TerrainSpawner(1, 1, terrainIndex, isStart);
                               break;
 
                 case LEVEL_2: terrainIndex = Random.Range(0, terrainData_List.Count);
-                              Level_X_TerrainSpawner(3, 2, terrainIndex, isStart);
+                              Level_X_TerrainSpawner(2, 1, terrainIndex, isStart);
                               break;
 
-                case LEVEL_3:
+                case LEVEL_3: terrainIndex = Random.Range(0, terrainData_List.Count);
+                              Level_X_TerrainSpawner(3, 2, terrainIndex, isStart);
+                              break;
                 case LEVEL_4: 
                 case LEVEL_5: terrainIndex = Random.Range(0, terrainData_List.Count);
                               Level_X_TerrainSpawner(terrainData_List[terrainIndex].getMaxInSuccession(),

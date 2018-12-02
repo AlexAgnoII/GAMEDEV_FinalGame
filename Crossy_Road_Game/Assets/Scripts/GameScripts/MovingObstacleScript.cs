@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingObstacleScript : MonoBehaviour {
 
-    [SerializeField] private float distanceOfDeath = 20;
+    private float distanceOfDeath = 35;
     [SerializeField] private GameObject leftLight;
     [SerializeField] private GameObject rightLight;
 
