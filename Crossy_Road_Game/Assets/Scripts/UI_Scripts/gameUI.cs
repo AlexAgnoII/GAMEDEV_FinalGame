@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class gameUI : MonoBehaviour {
-    private float timer = 4.0f;
+    private float timer = 7.0f; //Default: 4.0f
     [SerializeField] private Text textScore;
     [SerializeField] private Text timeText;
 
@@ -29,7 +29,24 @@ public class gameUI : MonoBehaviour {
         if (timer > 0)
         {
             timer -= Time.deltaTime;
-            timeText.text = "" + (int)timer;
+
+
+            if(timer  > 6.0f)
+            {
+                timeText.text = "Beat";
+            }
+            else if (timer > 5.0f)
+            {
+                timeText.text = "our";
+            }
+            else if(timer > 4.0f)
+            {
+                timeText.text = "highscores";
+            }
+            else timeText.text = "" + (int)timer;
+
+
+
             if (timer-1 < 0)
             {
                 timeText.text = "GO!!";

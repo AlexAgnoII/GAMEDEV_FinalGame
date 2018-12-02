@@ -12,11 +12,11 @@ public class TerrainGenerator : MonoBehaviour {
 
     private Vector3 currentPosition = new Vector3(1, 0, 0);
 
-    private const int LEVEL_1_REQ_STEPS = 20;
-    private const int LEVEL_2_REQ_STEPS = 40;
-    private const int LEVEL_3_REQ_STEPS = 60;
-    private const int LEVEL_4_REQ_STEPS = 80;
-    private const int LEVEL_5_REQ_STEPS = 100;
+    private const int LEVEL_1_REQ_STEPS = 10; //20
+    private const int LEVEL_2_REQ_STEPS = 20; //40
+    private const int LEVEL_3_REQ_STEPS = 30; //60
+    private const int LEVEL_4_REQ_STEPS = 40; //80
+    private const int LEVEL_5_REQ_STEPS = 60; //100
 
     private const int LEVEL_0 = 0;
     private const int LEVEL_1 = 1;
@@ -86,11 +86,11 @@ public class TerrainGenerator : MonoBehaviour {
                               break;
 
                 case LEVEL_2: terrainIndex = Random.Range(0, terrainData_List.Count);
-                              Level_X_TerrainSpawner(2, 1, terrainIndex, isStart);
+                              Level_X_TerrainSpawner(1, 2, terrainIndex, isStart);
                               break;
 
                 case LEVEL_3: terrainIndex = Random.Range(0, terrainData_List.Count);
-                              Level_X_TerrainSpawner(3, 2, terrainIndex, isStart);
+                              Level_X_TerrainSpawner(2, 3, terrainIndex, isStart);
                               break;
                 case LEVEL_4: 
                 case LEVEL_5: terrainIndex = Random.Range(0, terrainData_List.Count);
@@ -101,20 +101,17 @@ public class TerrainGenerator : MonoBehaviour {
                               break;
                 //first 20 steps
                 default: terrainIndex = Random.Range(0, terrainData_List.Count - 1);
-                         Level_X_TerrainSpawner(2, 1, terrainIndex , isStart);
+                         Level_X_TerrainSpawner(1, 1, terrainIndex , isStart);
                          break;
             }
         }
     }
 
 
-    private void Level_X_TerrainSpawner(int maxSuccession,
-                                       int minSucession,
-                                       int terrainIndex,
-                                       bool isStart)
+    private void Level_X_TerrainSpawner(int minSucession, int maxSuccession,int terrainIndex, bool isStart)
     {
         GameObject terrain, terrainRemove;
-        int terrainInSuccession = Random.Range(maxSuccession, minSucession);
+        int terrainInSuccession = Random.Range(minSucession, maxSuccession);
 
         List<GameObject> terrainKinds = terrainData_List[terrainIndex].getTerrainKinds();
         for (int i = 0; i < terrainInSuccession; i++)
@@ -200,6 +197,10 @@ public class TerrainGenerator : MonoBehaviour {
                 break;
             default: break; //default level (0-19)
         }
+
+        Debug.Log("Current Max speed: " + this.newMaxSpeed);
+        Debug.Log("Current Max timeSpawn: " + this.newMaxSpawnTime);
+        Debug.Log("Current Min timeSpawn: " + this.newMinSpawnTime);
     }
 
     private void level_1_difficulty()
@@ -211,7 +212,6 @@ public class TerrainGenerator : MonoBehaviour {
     {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(1);
-        this.newMinSpawnTime = this.minTimeModifier(1);
         this.newMaxSpeed = this.speedModifier(1);
 
     }
@@ -220,7 +220,6 @@ public class TerrainGenerator : MonoBehaviour {
     {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(1);
-        this.newMinSpawnTime = this.minTimeModifier(1);
         this.newMaxSpeed = this.speedModifier(2);
     }
 
@@ -235,7 +234,6 @@ public class TerrainGenerator : MonoBehaviour {
     {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(2);
-        this.newMinSpawnTime = this.minTimeModifier(2);
         this.newMaxSpeed = this.speedModifier(2);
         this.hasFastBoi = true;
     }
