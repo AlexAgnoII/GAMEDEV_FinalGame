@@ -9190,7 +9190,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6782
+  m_Name: pb_Mesh281628
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10263,7 +10263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hopSound: {fileID: 8300000, guid: c0bc9ae61b499654e81d99a33fa9d676, type: 3}
-  tweenSpeed: 0.02
+  tweenSpeed: 0.1
   player_max_z_before_death: 10
   sphereColliderYValue: -0.3
   playerHolderTransform: {fileID: 1792849520}
@@ -74896,7 +74896,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6582
+  m_Name: pb_Mesh280020
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -75224,7 +75224,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6440
+  m_Name: pb_Mesh278888
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -79850,7 +79850,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6502
+  m_Name: pb_Mesh279344
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
