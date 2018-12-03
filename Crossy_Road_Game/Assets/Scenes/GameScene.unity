@@ -42626,7 +42626,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cdb422fd69d57e64eacb1764c317ea33, type: 2}
   - {fileID: 11400000, guid: 3d20e8329f444644a9af3a2aaa589ef4, type: 2}
   - {fileID: 11400000, guid: 1c5d81f4d2f394b4694089aaa8935975, type: 2}
-  additive_speed: 3
+  additive_speed: 1.5
   movingSpeed: 4.5
   supa_fast_boi: 50
   time_reduction: 0.5

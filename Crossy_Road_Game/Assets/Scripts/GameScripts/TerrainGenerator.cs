@@ -11,12 +11,12 @@ public class TerrainGenerator : MonoBehaviour {
     private Queue<GameObject> currentTerrainsQueue = new Queue<GameObject>();
 
     private Vector3 currentPosition = new Vector3(1, 0, 0);
-
-    private const int LEVEL_1_REQ_STEPS = 10; //20
-    private const int LEVEL_2_REQ_STEPS = 20; //40
-    private const int LEVEL_3_REQ_STEPS = 40; //60
-    private const int LEVEL_4_REQ_STEPS = 60; //80
-    private const int LEVEL_5_REQ_STEPS = 80; //100
+                                              //Vanila    Next level
+    private const int LEVEL_1_REQ_STEPS = 20; //20             20
+    private const int LEVEL_2_REQ_STEPS = 30; //40             30
+    private const int LEVEL_3_REQ_STEPS = 60; //60             60
+    private const int LEVEL_4_REQ_STEPS = 80; //80             80
+    private const int LEVEL_5_REQ_STEPS = 120; //100           120
 
     private const int LEVEL_0 = 0;
     private const int LEVEL_1 = 1;
@@ -33,6 +33,7 @@ public class TerrainGenerator : MonoBehaviour {
     [SerializeField] private float time_reduction;   //0.5
     [SerializeField] private float maxSpawnTime;     //5
     [SerializeField] private float minSpawnTime;     //3
+    private float superRare = 10.0f;
 
     private bool hasFastBoi = false;
     private float newMaxSpeed;  
@@ -125,9 +126,9 @@ public class TerrainGenerator : MonoBehaviour {
             if (terrain.tag == PrefabTags.TerrainGroup.NORTH_BOUND_ROAD ||
                terrain.tag == PrefabTags.TerrainGroup.SOUTH_BOUND_ROAD)
             {
-                float superRare = 2.0f;
+                
                 float speed_wish = this.newMaxSpeed;
-                if(hasFastBoi && Random.Range(0, 100) < superRare)
+                if(hasFastBoi && Random.Range(0, 100) < this.superRare)
                 {
                     speed_wish = this.supa_fast_boi;
                 }
@@ -172,48 +173,49 @@ public class TerrainGenerator : MonoBehaviour {
         switch (currScore)
         {
             case LEVEL_1_REQ_STEPS:
-                Debug.Log("Level 1 reached");
                 level_1_difficulty();
                 break;
 
             case LEVEL_2_REQ_STEPS:
-                Debug.Log("Level 2 reached");
                 level_2_difficulty();
                 break;
 
             case LEVEL_3_REQ_STEPS:
-                Debug.Log("Level 3 reached");
                 level_3_difficulty();
                 break;
 
             case LEVEL_4_REQ_STEPS:
-                Debug.Log("Level 4 reached");
                 level_4_difficulty();
                 break;
 
             case LEVEL_5_REQ_STEPS:
-                Debug.Log("Level 5 reached");
                 level_5_difficulty();
                 break;
             default: break; //default level (0-19)
         }
+    }
 
+    private void printDifficulty()
+    {
         Debug.Log("Current Max speed: " + this.newMaxSpeed);
         Debug.Log("Current Max timeSpawn: " + this.newMaxSpawnTime);
         Debug.Log("Current Min timeSpawn: " + this.newMinSpawnTime);
+        Debug.Log("Current Supa fast boi chance: " + this.superRare);
     }
 
     private void level_1_difficulty()
     {
         this.increaseCurrentDifficultyValue();
+        this.hasFastBoi = true;
+        this.increaseSupaFastBoiChance();
     }
 
     private void level_2_difficulty()
     {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(1);
-        //this.newMaxSpeed = this.speedModifier(1);
-
+        this.hasFastBoi = true;
+        this.increaseSupaFastBoiChance();
     }
 
     private void level_3_difficulty()
@@ -221,6 +223,8 @@ public class TerrainGenerator : MonoBehaviour {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(1);
         this.newMaxSpeed = this.speedModifier(2);
+        this.hasFastBoi = true;
+        this.increaseSupaFastBoiChance();
     }
 
     private void level_4_difficulty()
@@ -228,14 +232,17 @@ public class TerrainGenerator : MonoBehaviour {
         this.increaseCurrentDifficultyValue();
         this.newMaxSpawnTime = this.maxTimeModifier(2);
         this.newMaxSpeed = this.speedModifier(2);
+        this.hasFastBoi = true;
+        this.increaseSupaFastBoiChance();
     }
 
     private void level_5_difficulty()
     {
         this.increaseCurrentDifficultyValue();
-        this.newMaxSpawnTime = this.maxTimeModifier(2);
-        this.newMaxSpeed = this.speedModifier(2);
+        this.newMaxSpawnTime = this.maxTimeModifier(3);
+        this.newMaxSpeed = this.speedModifier(3);
         this.hasFastBoi = true;
+        this.increaseSupaFastBoiChance();
     }
 
     private float speedModifier(float multiplier)
@@ -256,6 +263,11 @@ public class TerrainGenerator : MonoBehaviour {
     private int increaseCurrentDifficultyValue()
     {
         return this.currentDifficulty++;
+    }
+
+    private void increaseSupaFastBoiChance()
+    {
+        this.superRare += 5;
     }
 
 }
