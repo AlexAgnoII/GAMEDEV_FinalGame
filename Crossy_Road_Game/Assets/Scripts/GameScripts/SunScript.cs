@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class DirectionalLightScript : MonoBehaviour {
+public class SunScript : MonoBehaviour {
 
     [SerializeField] private AudioClip nightSound;
     bool night = false;
-    int DIRECTIONAL_LIGHT_ROTATION = 2;
+    int DIRECTIONAL_LIGHT_ROTATION = 5;
     float directionalLightRotation;
 
     // Use this for initialization

@@ -42,7 +42,7 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 0.5
+      intensity: 1
       radius: 0.3
       sampleCount: 10
       downsampling: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.83
+        intensity: 0.95
         threshold: 1.25
         softKnee: 0.25
         radius: 4
@@ -109,7 +109,7 @@ MonoBehaviour:
         texture: {fileID: 0}
         intensity: 3
   colorGrading:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       tonemapping:
         tonemapper: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       mode: 0
-      color: {r: 0.8867924, g: 0.8166032, b: 0.74038804, a: 1}
+      color: {r: 0.4056604, g: 0.2602967, b: 0.10524209, a: 1}
       center: {x: 0.5, y: 0.5}
       intensity: 0.25
       smoothness: 1
