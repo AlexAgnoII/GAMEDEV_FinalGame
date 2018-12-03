@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour {
 
     [SerializeField] private AudioClip hopSound;
     [SerializeField] private float tweenSpeed;
-    [SerializeField] private float player_max_z_before_death = 16.0f;
+    [SerializeField] private float player_max_z_before_death;
+    [SerializeField] private float sphereColliderYValue; 
     [SerializeField] private Transform playerHolderTransform;
     private Animator playerAnimator;
     private AudioSource audioSource;
@@ -24,11 +25,15 @@ public class PlayerScript : MonoBehaviour {
     private bool canPlay;
 
     private bool killedByHimself;
+    private int currentMove = 0 ;
+    private const int MOVE_UP = 1;
+    private const int MOVE_DOWN = 2;
+    private const int MOVE_LEFT = 3;
+    private const int MOVE_RIGHT = 4;
 
 
     private void Start()
     {
-        player_max_z_before_death = 16.0f;
         once = true;
         onceTrigger = true;
         isAlive = true;
@@ -62,8 +67,8 @@ public class PlayerScript : MonoBehaviour {
     void Update () {
 
         //If went outofbounds with log, dead.
-        if(this.transform.position.z < - 9/*this.player_max_z_before_death*/ ||
-            this.transform.position.z > 9 /*this.player_max_z_before_death */)
+        if(this.transform.position.z < -this.player_max_z_before_death ||
+            this.transform.position.z > this.player_max_z_before_death)
         {
             this.isAlive = false;
             this.killedByHimself = true;
@@ -71,26 +76,49 @@ public class PlayerScript : MonoBehaviour {
 
         if(this.isAlive && this.canPlay)
         {
-            if(Input.GetKeyDown(KeyCode.W) && !isHopping)
+            InputManager();
+            if(currentMove == MOVE_UP && !isHopping)
             {
                 CharacterMove(new Vector3(1, 0, genWholeNumPosition(transform.position.z)));
                 CharacterRotate(0);
             }
-            else if (Input.GetKeyDown(KeyCode.S) && !isHopping)
+            else if (currentMove == MOVE_DOWN && !isHopping)
             {
                 CharacterMove(new Vector3(-1, 0, genWholeNumPosition(transform.position.z)));
                 CharacterRotate(180);
             }
-            else if (Input.GetKeyDown(KeyCode.A) && !isHopping)
+            else if (currentMove == MOVE_LEFT && !isHopping)
             {
                 CharacterMove(new Vector3(0, 0, 1));
                 CharacterRotate(-90);
             }
-            else if (Input.GetKeyDown(KeyCode.D) && !isHopping)
+            else if (currentMove == MOVE_RIGHT && !isHopping)
             {
                 CharacterMove(new Vector3(0, 0, -1));
                 CharacterRotate(90);
             }
+
+            currentMove = 0;
+        }
+    }
+
+    private void InputManager()
+    {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            currentMove = MOVE_UP;
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            currentMove = MOVE_DOWN;
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            currentMove = MOVE_LEFT;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            currentMove = MOVE_RIGHT;
         }
     }
 
@@ -169,7 +197,7 @@ public class PlayerScript : MonoBehaviour {
         EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND);
         //check if there is collision from a fixed obstacle infront of user.
         if (!hasObstacleInFront(nextLocation))
-            transform.DOMove(transform.position + nextLocation, tweenSpeed).SetEase(Ease.Flash).OnComplete(onMoveTweenFinish);
+            transform.DOMove(transform.position + nextLocation, tweenSpeed).OnComplete(onMoveTweenFinish);
         
         //Broadcast to terrain generator.
         Parameters parameters = new Parameters();
@@ -201,7 +229,7 @@ public class PlayerScript : MonoBehaviour {
     //for animation event.
     public void FinishedHop()
     {
-        this.myCollider.center = new Vector3(0, -0.02f, 0);
+        this.myCollider.center = new Vector3(0, this.sphereColliderYValue, 0);
     }
 
     //for animation event.

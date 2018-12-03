@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427135, b: 0.56452316, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9190,7 +9190,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18736
+  m_Name: pb_Mesh6782
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10263,8 +10263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hopSound: {fileID: 8300000, guid: c0bc9ae61b499654e81d99a33fa9d676, type: 3}
-  tweenSpeed: 0.1
+  tweenSpeed: 0.02
   player_max_z_before_death: 10
+  sphereColliderYValue: -0.3
   playerHolderTransform: {fileID: 1792849520}
 --- !u!95 &386800233
 Animator:
@@ -10296,8 +10297,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.2
+  m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!4 &388682017 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4609208954773616, guid: 4cf6b12bcdfb2264280d2ddd3438ee45,
@@ -74895,7 +74896,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18594
+  m_Name: pb_Mesh6582
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -75223,7 +75224,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18468
+  m_Name: pb_Mesh6440
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -79849,7 +79850,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18520
+  m_Name: pb_Mesh6502
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
