@@ -23,6 +23,8 @@ public class PlayerScript : MonoBehaviour {
     private float maxX;
     private bool canPlay;
 
+    private bool killedByHimself;
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class PlayerScript : MonoBehaviour {
         killedByVehicle = false;
         canPlay = false;
         maxX = 0.0f;
+        killedByHimself = false;
 
         playerAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -59,10 +62,11 @@ public class PlayerScript : MonoBehaviour {
     void Update () {
 
         //If went outofbounds with log, dead.
-        if(this.transform.position.z < -this.player_max_z_before_death ||
-            this.transform.position.z > this.player_max_z_before_death)
+        if(this.transform.position.z < - 9/*this.player_max_z_before_death*/ ||
+            this.transform.position.z > 9 /*this.player_max_z_before_death */)
         {
             this.isAlive = false;
+            this.killedByHimself = true;
         }
 
         if(this.isAlive && this.canPlay)
@@ -138,10 +142,13 @@ public class PlayerScript : MonoBehaviour {
         //disable collider. (thiss enures particle effect will work perfectly without hitting player's collider.
         this.GetComponent<SphereCollider>().enabled = false;
 
-        if (killedByVehicle)
-            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_EXPLOD_FROM_CAR);
-        else
-            EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_SPLASH_FROM_WATER);
+        if (!this.killedByHimself)
+        {
+            if (killedByVehicle)
+                EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_EXPLOD_FROM_CAR);
+            else
+                EventBroadcaster.Instance.PostEvent(EventNames.FinalGameEvents.ON_PLAYER_SPLASH_FROM_WATER);
+        }
     }
 
     private float genWholeNumPosition(float notWholeZ)
