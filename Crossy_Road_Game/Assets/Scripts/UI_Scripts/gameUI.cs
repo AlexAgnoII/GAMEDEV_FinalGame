@@ -39,7 +39,7 @@ public class gameUI : MonoBehaviour {
             {
                 timeText.text = "Get to the other side! Dodge All the Cars and Jump on the Logs";
             }
-            else timeText.text = "Use WASD to move Hamsuke to get as far as you can!";// + (int)timer;
+            else timeText.text = "Use WASD/Arrow keys to move Hamsuke to get as far as you can!";// + (int)timer;
 
 
 
