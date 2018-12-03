@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class gameUI : MonoBehaviour {
-    private float timer = 7.0f; //Default: 4.0f
+    private float timer = 8.0f; //Default: 4.0f
     [SerializeField] private Text textScore;
     [SerializeField] private Text timeText;
 
@@ -31,11 +31,15 @@ public class gameUI : MonoBehaviour {
             timer -= Time.deltaTime;
 
 
-            if(timer  > 6.0f)
+            if (timer > 7.0f)
             {
-                timeText.text = "Ready.";
+                timeText.text = "Ready?";
             }
-            else timeText.text = "" + (int)timer;
+            else if (timer > 4.0f && timer < 7.0f)
+            {
+                timeText.text = "Get to the other side! Dodge All the Cars and Jump on the Logs";
+            }
+            else timeText.text = "Use WASD to move Hamsuke to get as far as you can!";// + (int)timer;
 
 
 
