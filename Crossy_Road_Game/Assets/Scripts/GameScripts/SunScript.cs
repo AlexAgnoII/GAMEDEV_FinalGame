@@ -3,6 +3,7 @@
 public class SunScript : MonoBehaviour {
 
     [SerializeField] private AudioClip nightSound;
+    public const string DAY_PHASE = "DAY_PHASE";
     bool night = false;
     int DIRECTIONAL_LIGHT_ROTATION = 5;
     float directionalLightRotation;
@@ -31,16 +32,22 @@ public class SunScript : MonoBehaviour {
         checkDayPhase();
     }
 
+    private void dayPhaseChanged()
+    {
+        Parameters param = new Parameters();
+        param.PutExtra(EventNames.FinalGameAudioEvents.CURRENT_DAY_PHASE, night);
+        EventBroadcaster.Instance.PostEvent(EventNames.FinalGameAudioEvents.CHANGE_DAY_PHASE, param);
+    }
     public void checkDayPhase()
     {
-        
-        //Debug.Log("Checking Day Phase");
+       
         if (directionalLightRotation > 180)
         {
             if(night != true)
             {
                 Debug.Log("It's now night!");
                 night = true;
+                dayPhaseChanged();
                 Tell_Morning_Or_Light();
             }
         }
@@ -50,8 +57,8 @@ public class SunScript : MonoBehaviour {
             {
                 Debug.Log("It's now morning again!");
                 night = false;
+                dayPhaseChanged();
                 Tell_Morning_Or_Light();
-                //play morning sound
             }
         }
     }

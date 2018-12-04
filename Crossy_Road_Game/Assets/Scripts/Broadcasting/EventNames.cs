@@ -41,6 +41,8 @@ public class EventNames {
         public const string ON_DAY_PHASE = "ON_DAY_PHASE"; //used by directional light to tell current cars if its morning / night.
         public const string ON_SPLASH_SOUND = "ON_SPLASH_SOUND";
         public const string ON_CRASH_SOUND = "ON_CRASH_SOUND";
+        public const string CURRENT_DAY_PHASE = "CURRENT_DAY_PHASE";
+        public const string CHANGE_DAY_PHASE = "CHANGE_DAY_PHASE";
     }
 
 }
