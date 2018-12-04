@@ -33,7 +33,7 @@ public class SoundEffectsScript : MonoBehaviour {
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_DEATH_SOUND, this.playDeathSound);
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_SPLASH_SOUND, this.playSplashSound);
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_CRASH_SOUND, this.playCrashSound);
-        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_DAY_PHASE, this.playBGM);
+        EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.CHANGE_DAY_PHASE, this.changeBGM);
         EventBroadcaster.Instance.AddObserver(EventNames.FinalGameAudioEvents.ON_HOPPING_SOUND, this.playHoppingSound);
 
         hoppingAudioSource = GetComponent<AudioSource>();
@@ -51,8 +51,8 @@ public class SoundEffectsScript : MonoBehaviour {
         nightSoundSource = AddAudio(nightSound, true);
         morningSoundSource = AddAudio(morningSound, true);
 
-        morningSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("AmbientNoise")[0];
-        nightSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("AmbientNoise")[0];
+        morningSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Morning Ambient")[0];
+        nightSoundSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Night Ambient")[0];
         playBGM();
     }
 
@@ -112,10 +112,10 @@ public class SoundEffectsScript : MonoBehaviour {
     {
         morningSoundSource.Play();
     }
- /*   public void playBGM(Parameters param)
+    public void changeBGM(Parameters param)
     {
-        night = param.GetBoolExtra(DirectionalLightScript.DAY_PHASE, false);
-
+        night = param.GetBoolExtra(EventNames.FinalGameAudioEvents.CURRENT_DAY_PHASE, false);
+        Debug.Log("changing BGM. Night is " + night);
         if (night == true)
         {
             morningSoundSource.Stop();
@@ -126,7 +126,7 @@ public class SoundEffectsScript : MonoBehaviour {
             nightSoundSource.Stop();
             morningSoundSource.Play();
         }
-    }*/
+    }
 
     public AudioSource AddAudio(AudioClip audioClip, bool loop)
     {
